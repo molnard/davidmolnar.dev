@@ -1,0 +1,38 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  altLang: Lang;
+  altHref: string;
+}
+
+const { lang, altLang, altHref } = Astro.props;
+const t = useTranslations(lang);
+const prefix = lang === 'en' ? '' : '/hu';
+const home = prefix || '/';
+---
+
+<header class="sticky top-0 z-50 bg-paper/80 backdrop-blur-md border-b border-ink/5">
+  <nav class="max-w-5xl mx-auto px-6 md:px-8 py-4 flex items-center justify-between">
+    <a href={home} class="font-serif text-xl tracking-tight hover:text-accent transition-colors"><span>David Molnar</span></a>
+    <div class="flex items-center gap-5 md:gap-7 text-sm">
+      <a href={`${prefix}/#work`} class="hidden sm:inline hover:text-accent transition-colors">{t('nav.work')}</a>
+      <a href={`${prefix}/#about`} class="hidden sm:inline hover:text-accent transition-colors">{t('nav.about')}</a>
+      <a href={`${prefix}/#contact`} class="hidden sm:inline hover:text-accent transition-colors">{t('nav.contact')}</a>
+      <div class="font-mono text-xs uppercase tracking-widest flex items-center gap-1.5 ml-2">
+        {lang === 'en' ? (
+          <span class="text-accent">EN</span>
+        ) : (
+          <a href="/" class="opacity-40 hover:opacity-100 hover:text-accent transition-all">EN</a>
+        )}
+        <span class="opacity-20">/</span>
+        {lang === 'hu' ? (
+          <span class="text-accent">HU</span>
+        ) : (
+          <a href="/hu/" class="opacity-40 hover:opacity-100 hover:text-accent transition-all">HU</a>
+        )}
+      </div>
+    </div>
+  </nav>
+</header>
