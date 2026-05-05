@@ -22,20 +22,19 @@ const home = lang === 'en' ? '/' : '/hu/';
       <span>David Molnar</span>
     </a>
     <div class="flex items-center gap-5 md:gap-7 text-sm">
-      <a href={`${prefix}/#work`} class="hidden sm:inline text-ink/80 hover:text-forest transition-colors">{t('nav.work')}</a>
-      <a href={`${prefix}/#about`} class="hidden sm:inline text-ink/80 hover:text-forest transition-colors">{t('nav.about')}</a>
+      <a href={`${prefix}/projects/`} class="hidden sm:inline text-ink/80 hover:text-forest transition-colors">{t('nav.projects')}</a>
       <a href={`${prefix}/#contact`} class="hidden sm:inline text-ink/80 hover:text-forest transition-colors">{t('nav.contact')}</a>
       <div class="font-mono text-[11px] uppercase tracking-widest flex items-center gap-1.5 ml-2">
         {lang === 'en' ? (
           <span class="text-forest font-semibold">EN</span>
         ) : (
-          <a href="/" class="text-ink/40 hover:text-forest transition-colors">EN</a>
+          <a href={altHref} data-lang-switch="en" class="text-ink/40 hover:text-forest transition-colors">EN</a>
         )}
         <span class="text-ink/20">/</span>
         {lang === 'hu' ? (
           <span class="text-forest font-semibold">HU</span>
         ) : (
-          <a href="/hu/" class="text-ink/40 hover:text-forest transition-colors">HU</a>
+          <a href={altHref} data-lang-switch="hu" class="text-ink/40 hover:text-forest transition-colors">HU</a>
         )}
       </div>
     </div>

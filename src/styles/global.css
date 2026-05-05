@@ -68,6 +68,44 @@
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+/* Project / competency page markdown content */
+.md-content h2 {
+  @apply font-display font-semibold text-xl md:text-2xl text-ink mt-10 mb-4 tracking-tight;
+}
+.md-content h3 {
+  @apply font-display font-semibold text-lg text-ink mt-8 mb-3 tracking-tight;
+}
+.md-content p {
+  @apply text-muted leading-relaxed mb-5;
+}
+.md-content ul {
+  @apply list-disc list-outside pl-5 mb-5 space-y-1.5 text-muted;
+}
+.md-content ol {
+  @apply list-decimal list-outside pl-5 mb-5 space-y-1.5 text-muted;
+}
+.md-content li {
+  @apply leading-relaxed;
+}
+.md-content strong {
+  @apply font-semibold text-ink;
+}
+.md-content a {
+  @apply text-forest underline underline-offset-2 hover:text-forest-dark transition-colors;
+}
+.md-content code {
+  @apply font-mono text-sm bg-cream px-1.5 py-0.5 rounded text-ink;
+}
+.md-content pre {
+  @apply font-mono text-sm bg-[#0F1A14] text-paper p-5 rounded-xl overflow-x-auto mb-5;
+}
+.md-content blockquote {
+  @apply border-l-2 border-amber pl-5 italic text-muted mb-5;
+}
+.md-content hr {
+  @apply border-ink/10 my-8;
+}
+
 @layer base {
   :root {
     color-scheme: light;
