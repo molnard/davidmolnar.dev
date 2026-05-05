@@ -21,6 +21,7 @@ const projects: Project[] = [
     desc:    t('work.wasabi.desc'),
     initial: 'W',
     href:    'https://wasabiwallet.io/',
+    logo:    '/images/projects/wasabi-wallet.svg',
   },
   {
     title:   t('work.ginger.title'),
@@ -28,6 +29,7 @@ const projects: Project[] = [
     desc:    t('work.ginger.desc'),
     initial: 'G',
     href:    'https://gingerwallet.io/',
+    logo:    '/images/projects/ginger-wallet.svg',
   },
   {
     title:   t('work.fetaphon.title'),
@@ -71,7 +73,13 @@ const tileClasses =
               <span class="font-mono text-xs text-paper/40">↗</span>
             </div>
             <div>
-              <div class="font-display font-bold leading-none text-[5.5rem] md:text-[6.5rem] text-amber/80 mb-2 -ml-1">{p.initial}</div>
+              {p.logo ? (
+                <div class="mb-5 flex h-24 w-24 items-center justify-center rounded-2xl bg-paper/95 p-5 shadow-sm">
+                  <img src={p.logo} alt="" loading="lazy" class="max-h-full max-w-full object-contain" />
+                </div>
+              ) : (
+                <div class="font-display font-bold leading-none text-[5.5rem] md:text-[6.5rem] text-amber/80 mb-2 -ml-1">{p.initial}</div>
+              )}
               <h3 class="font-display font-semibold text-xl md:text-2xl tracking-tight text-paper">{p.title}</h3>
             </div>
           </div>
@@ -88,7 +96,13 @@ const tileClasses =
           <div class="absolute inset-0 flex flex-col justify-between p-6 md:p-7 transition-opacity duration-300 group-hover:opacity-0">
             <span class="font-mono text-[10px] uppercase tracking-widest text-amber">{p.role}</span>
             <div>
-              <div class="font-display font-bold leading-none text-[5.5rem] md:text-[6.5rem] text-amber/80 mb-2 -ml-1">{p.initial}</div>
+              {p.logo ? (
+                <div class="mb-5 flex h-24 w-24 items-center justify-center rounded-2xl bg-paper/95 p-5 shadow-sm">
+                  <img src={p.logo} alt="" loading="lazy" class="max-h-full max-w-full object-contain" />
+                </div>
+              ) : (
+                <div class="font-display font-bold leading-none text-[5.5rem] md:text-[6.5rem] text-amber/80 mb-2 -ml-1">{p.initial}</div>
+              )}
               <h3 class="font-display font-semibold text-xl md:text-2xl tracking-tight text-paper">{p.title}</h3>
             </div>
           </div>

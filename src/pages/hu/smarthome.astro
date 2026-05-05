@@ -1,0 +1,22 @@
+---
+import CompetencyPage from '../../components/CompetencyPage.astro';
+import { useTranslations } from '../../i18n/utils';
+const t = useTranslations('hu');
+---
+<CompetencyPage
+  lang="hu"
+  competency="smarthome"
+  title={`${t('comp.smarthome.title')} — David Molnar`}
+  description="Home Assistant, Homey, Zigbee. Otthonok és épületautomatizálás, távoli elérés, monitorozás, AI integráció."
+  detail={t('comp.smarthome.detail')}
+  tag={t('comp.smarthome.tag')}
+  image="/images/competencies/smarthome.webp"
+  fallbackClass="bg-c-sh"
+  altHref="/smarthome/"
+/>
+
+<style>
+  .bg-c-sh {
+    background: linear-gradient(135deg, #1A2E25 0%, #3F5F52 50%, #B8801F 100%);
+  }
+</style>

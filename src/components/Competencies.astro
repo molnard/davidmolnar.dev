@@ -22,8 +22,8 @@ function findImage(slug: string): string | null {
 }
 
 interface Competency {
-  id: string;
   slug: string;
+  urlSlug: string;
   tag: string;
   title: string;
   short: string;
@@ -34,11 +34,11 @@ interface Competency {
 }
 
 const items: Competency[] = [
-  { id: 'c-bitcoin',   slug: 'bitcoin',   tag: t('comp.bitcoin.tag'),   title: t('comp.bitcoin.title'),   short: t('comp.bitcoin.short'),   alt: t('comp.bitcoin.alt'),   fallback: 'bg-c-btc', image: findImage('bitcoin'),   hero: true },
-  { id: 'c-software',  slug: 'software',  tag: t('comp.software.tag'),  title: t('comp.software.title'),  short: t('comp.software.short'),  alt: t('comp.software.alt'),  fallback: 'bg-c-sw',  image: findImage('software') },
-  { id: 'c-firmware',  slug: 'firmware',  tag: t('comp.firmware.tag'),  title: t('comp.firmware.title'),  short: t('comp.firmware.short'),  alt: t('comp.firmware.alt'),  fallback: 'bg-c-fw',  image: findImage('firmware') },
-  { id: 'c-smarthome', slug: 'smarthome', tag: t('comp.smarthome.tag'), title: t('comp.smarthome.title'), short: t('comp.smarthome.short'), alt: t('comp.smarthome.alt'), fallback: 'bg-c-sh',  image: findImage('smarthome') },
-  { id: 'c-print',     slug: 'print',     tag: t('comp.print.tag'),     title: t('comp.print.title'),     short: t('comp.print.short'),     alt: t('comp.print.alt'),     fallback: 'bg-c-3d',  image: findImage('print') },
+  { slug: 'bitcoin',      urlSlug: 'bitcoin',      tag: t('comp.bitcoin.tag'),   title: t('comp.bitcoin.title'),   short: t('comp.bitcoin.short'),   alt: t('comp.bitcoin.alt'),   fallback: 'bg-c-btc', image: findImage('bitcoin'),   hero: true },
+  { slug: 'software',     urlSlug: 'software',     tag: t('comp.software.tag'),  title: t('comp.software.title'),  short: t('comp.software.short'),  alt: t('comp.software.alt'),  fallback: 'bg-c-sw',  image: findImage('software') },
+  { slug: 'firmware',     urlSlug: 'firmware',     tag: t('comp.firmware.tag'),  title: t('comp.firmware.title'),  short: t('comp.firmware.short'),  alt: t('comp.firmware.alt'),  fallback: 'bg-c-fw',  image: findImage('firmware') },
+  { slug: 'smarthome',    urlSlug: 'smarthome',    tag: t('comp.smarthome.tag'), title: t('comp.smarthome.title'), short: t('comp.smarthome.short'), alt: t('comp.smarthome.alt'), fallback: 'bg-c-sh',  image: findImage('smarthome') },
+  { slug: 'print',        urlSlug: '3d-printing',  tag: t('comp.print.tag'),     title: t('comp.print.title'),     short: t('comp.print.short'),     alt: t('comp.print.alt'),     fallback: 'bg-c-3d',  image: findImage('print') },
 ];
 ---
 
@@ -51,7 +51,7 @@ const items: Competency[] = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {items.map(c => (
         <a
-          href={`#${c.id}`}
+          href={lang === 'hu' ? `/hu/${c.urlSlug}/` : `/${c.urlSlug}/`}
           class={`group relative block rounded-3xl overflow-hidden ${c.hero ? 'md:col-span-2 aspect-[16/10] md:aspect-[21/8]' : 'aspect-[4/3]'}`}
         >
           {c.image
@@ -67,7 +67,7 @@ const items: Competency[] = [
           }
           <div class="absolute inset-0 bg-gradient-to-t from-[#0F1A14]/85 via-[#0F1A14]/30 to-transparent"></div>
 
-          <span class="absolute top-6 right-6 md:top-7 md:right-7 w-11 h-11 rounded-full bg-paper/15 backdrop-blur-md flex items-center justify-center text-paper text-lg transition-all duration-300 group-hover:bg-amber group-hover:text-forest-dark group-hover:-rotate-45" aria-hidden="true">↓</span>
+          <span class="absolute top-6 right-6 md:top-7 md:right-7 w-11 h-11 rounded-full bg-paper/15 backdrop-blur-md flex items-center justify-center text-paper text-lg transition-all duration-300 group-hover:bg-amber group-hover:text-forest-dark group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">↗</span>
 
           <div class="relative z-10 h-full p-7 md:p-8 flex flex-col justify-end">
             <span class="font-mono text-[10px] uppercase tracking-widest text-amber mb-3">{c.tag}</span>

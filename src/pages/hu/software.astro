@@ -1,0 +1,117 @@
+---
+import CompetencyPage from '../../components/CompetencyPage.astro';
+import { useTranslations } from '../../i18n/utils';
+const t = useTranslations('hu');
+---
+<CompetencyPage
+  lang="hu"
+  competency="software"
+  title={`${t('comp.software.title')} — David Molnar`}
+  description=".NET, C#, elosztott rendszerek, desktop, web, hardver integráció. 15+ év tapasztalat."
+  detail={t('comp.software.detail')}
+  tag={t('comp.software.tag')}
+  image="/images/competencies/software.webp"
+  fallbackClass="bg-c-sw"
+  altHref="/software/"
+>
+  <section slot="extra" class="bg-paper border-t border-ink/5">
+    <div class="max-w-3xl mx-auto px-6 md:px-8 py-16 md:py-20">
+
+      <!-- Karrierív -->
+      <h2 class="font-display font-bold text-2xl md:text-3xl tracking-tight text-ink mb-10">Karrierív</h2>
+
+      <div class="space-y-10 mb-16">
+
+        <div class="flex gap-6">
+          <div class="shrink-0 w-24 font-mono text-[11px] text-muted pt-0.5">2024 —</div>
+          <div>
+            <p class="font-semibold text-ink text-base leading-snug">Független szoftverfejlesztő <span class="font-normal text-muted">· Egyéni vállalkozó</span></p>
+            <p class="text-sm text-muted mt-1 leading-relaxed">Párhuzamos szerződéses munka több ügyfélnek: TESCO (biztonsági rendszerek), AGIS (vállalati megfigyelő rendszerek), Ginger Wallet (nyílt forrású Bitcoin kliens). Emellett kis szériás 3D nyomtatásos gyártás, valamint okosotthon és villanyszerelési képesítés megszerzése folyamatban.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="shrink-0 w-24 font-mono text-[11px] text-muted pt-0.5">2018 — 2024</div>
+          <div>
+            <p class="font-semibold text-ink text-base leading-snug">Core Developer → CTO <span class="font-normal text-muted">· Wasabi Wallet / zkSNACKs</span></p>
+            <p class="text-sm text-muted mt-1 leading-relaxed">Hat év az egyik legelterjedtebb Bitcoin privacy walleten. Cross-platform desktop kliens .NET-ben és Avaloniával, CoinJoin protokoll implementáció, ASP.NET Core koordinátor backend, SQLite tárolás, Ubuntu szerver infrastruktúra, Cloudflare integráció. Contributorból csapatvezetőn át CTO-vá nőttem, közel 35 fős csapatban. 4663 commit.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="shrink-0 w-24 font-mono text-[11px] text-muted pt-0.5">2008 — 2018</div>
+          <div>
+            <p class="font-semibold text-ink text-base leading-snug">Senior szoftver- és beágyazott rendszer fejlesztő <span class="font-normal text-muted">· Pentavox</span></p>
+            <p class="text-sm text-muted mt-1 leading-relaxed">Tíz év a teljes termékéletcikluson át: STM32 és Atmel mikrokontroller firmware C-ben, Bluetooth és BLE, érintőképernyő integráció, egyedi PCB firmware. Vállalati oldalon: kliens-szerver biztonsági monitoring, AGIS-Graph megfigyelő rendszer integráció, 100+ telepítés kiszolgálása, SQLite/MySQL/PostgreSQL, Ubuntu szerver. 10 000 darabos gyártási folyamat koordinálása, hosszú életciklusú termék karbantartás.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="shrink-0 w-24 font-mono text-[11px] text-muted pt-0.5">2007 — 2008</div>
+          <div>
+            <p class="font-semibold text-ink text-base leading-snug">Hardver & szoftver fejlesztő <span class="font-normal text-muted">· SuperCoach LLC (Scottsdale, USA)</span></p>
+            <p class="text-sm text-muted mt-1 leading-relaxed">Teniszlabda-adogató gép teljes fejlesztése: egyedi PCB tervezés és firmware, beágyazott vezérlő szoftver, PC-s kezelői felület. Teljes tulajdonlás az architektúrától a gyártáselőkészítésig és tesztelésig.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Stack -->
+      <h2 class="font-display font-bold text-2xl md:text-3xl tracking-tight text-ink mb-8">Stack</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6 mb-16">
+        <div>
+          <h3 class="font-mono text-[11px] uppercase tracking-widest text-amber mb-3">Elsődleges</h3>
+          <ul class="space-y-1.5 text-muted text-sm leading-relaxed">
+            <li>C# / .NET — Avalonia UI, ASP.NET Core, WPF</li>
+            <li>REST API-k, elosztott kliens-szerver rendszerek</li>
+            <li>SQLite, MySQL, PostgreSQL</li>
+            <li>Ubuntu szerver, Cloudflare</li>
+            <li>GitHub, CI/CD</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-mono text-[11px] uppercase tracking-widest text-amber mb-3">Embedded & hardver</h3>
+          <ul class="space-y-1.5 text-muted text-sm leading-relaxed">
+            <li>C — STM32, Atmel, ESP32, nRF52</li>
+            <li>Bluetooth / BLE</li>
+            <li>PCB tervezés — EAGLE, Altium</li>
+            <li>Atollic TrueSTUDIO, Eclipse</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-mono text-[11px] uppercase tracking-widest text-amber mb-3">Open source</h3>
+          <ul class="space-y-1.5 text-muted text-sm leading-relaxed">
+            <li>Wasabi Wallet — 4663 commit</li>
+            <li>Ginger Wallet — aktív contributor</li>
+            <li>Bitcoin privacy eszközök</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="rounded-2xl bg-[#0F1A14] px-8 py-10 text-center">
+        <p class="font-display font-semibold text-xl text-paper mb-2">Nyitott vagyok új projektekre</p>
+        <p class="text-paper/60 text-sm mb-6 max-w-md mx-auto">
+          Hosszú távú szerződés vagy projekt alapú munka. .NET / C# rendszerek, embedded firmware, open source közreműködés vagy technikai tanácsadás.
+        </p>
+        <a
+          href="https://calendly.com/hello-davidmolnar/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-amber text-[#0F1A14] font-bold text-sm px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
+        >
+          Időpontot foglalok →
+        </a>
+      </div>
+
+    </div>
+  </section>
+</CompetencyPage>
+
+<style>
+  .bg-c-sw {
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(232,163,60,0.18) 0%, transparent 50%),
+      linear-gradient(135deg, #1F352B 0%, #0A1F15 100%);
+  }
+</style>

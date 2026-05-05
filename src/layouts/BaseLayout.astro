@@ -7,12 +7,13 @@ import { getLangFromUrl, type Lang } from '../i18n/utils';
 interface Props {
   title: string;
   description: string;
+  altHref?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, altHref: altHrefProp } = Astro.props;
 const lang: Lang = getLangFromUrl(Astro.url);
 const altLang: Lang = lang === 'en' ? 'hu' : 'en';
-const altHref = altLang === 'en' ? '/' : '/hu/';
+const altHref = altHrefProp ?? (altLang === 'en' ? '/' : '/hu/');
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImage = new URL('/og.png', Astro.site).toString();
 
@@ -48,6 +49,23 @@ const isProd = import.meta.env.PROD;
     <meta name="twitter:image" content={ogImage} />
 
     <title>{title}</title>
+
+    <!-- Language auto-detect: runs before paint to avoid flash -->
+    <script is:inline define:vars={{ lang, altHref }}>
+      (function () {
+        var stored = localStorage.getItem('lang');
+        var target;
+        if (stored === 'en' || stored === 'hu') {
+          target = stored;
+        } else {
+          var bl = (navigator.language || '').toLowerCase();
+          target = bl.startsWith('hu') ? 'hu' : 'en';
+        }
+        if (target !== lang) {
+          window.location.replace(altHref);
+        }
+      })();
+    </script>
   </head>
   <body class="min-h-screen bg-paper text-ink font-sans antialiased selection:bg-forest selection:text-paper">
     <Header lang={lang} altLang={altLang} altHref={altHref} />
@@ -55,6 +73,14 @@ const isProd = import.meta.env.PROD;
       <slot />
     </main>
     <Footer lang={lang} />
+
+    <!-- Save language preference when user manually switches -->
+    <script is:inline>
+      document.addEventListener('click', function (e) {
+        var el = e.target.closest('[data-lang-switch]');
+        if (el) localStorage.setItem('lang', el.dataset.langSwitch);
+      });
+    </script>
 
     {isProd && cfAnalyticsToken && (
       <script

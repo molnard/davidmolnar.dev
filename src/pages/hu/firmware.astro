@@ -1,0 +1,151 @@
+---
+import CompetencyPage from '../../components/CompetencyPage.astro';
+import { useTranslations } from '../../i18n/utils';
+const t = useTranslations('hu');
+---
+<CompetencyPage
+  lang="hu"
+  competency="firmware"
+  title={`${t('comp.firmware.title')} — David Molnar`}
+  description="ESP32, STM32, Atmel, nRF52. Akkumulátoros kézi eszközök, Bluetooth, kijelzők, hang. Egyedi firmware PCB kapcsolási rajztól."
+  detail={t('comp.firmware.detail')}
+  tag={t('comp.firmware.tag')}
+  image="/images/competencies/firmware.webp"
+  fallbackClass="bg-c-fw"
+  altHref="/firmware/"
+>
+  <section slot="extra" class="bg-paper border-t border-ink/5">
+    <div class="max-w-3xl mx-auto px-6 md:px-8 py-16 md:py-20">
+
+      <h2 class="font-display font-bold text-2xl md:text-3xl tracking-tight text-ink mb-10">Projektek</h2>
+
+      <div class="space-y-10 mb-16">
+
+        <div>
+          <p class="font-semibold text-ink text-base leading-snug">SuperCoach teniszlabda-adogató gép <span class="font-normal text-muted">· Scottsdale, USA</span></p>
+          <p class="text-sm text-muted mt-1 leading-relaxed">Fejlett teniszlabda-adogató gép programozható lövésmintákkal. Megterveztem a vezérlőelektronika PCB-jét, megírtam a beágyazott firmware-t, és terveztem egy Bluetooth távirányítót — saját PCB-vel és firmware-rel. Teljes körű tulajdonlás a kapcsolási rajztól a tesztelésen és gyártáselőkészítésen át. Ez a projekt lett a diplomamunkám.</p>
+          <div class="flex flex-wrap gap-1.5 mt-2">
+            {['Atmel', 'Bluetooth', 'PCB tervezés', 'C'].map(t => (
+              <span class="font-mono text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full bg-forest/10 text-forest-dark">{t}</span>
+            ))}
+          </div>
+          <a href="https://youtu.be/8nL4DkFwqMI" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 mt-3 text-xs text-forest hover:underline">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            SuperCoach Tennis Ball Machine — YouTube
+          </a>
+        </div>
+
+        <div>
+          <p class="font-semibold text-ink text-base leading-snug">Kézi, asztali és orvosi műszerek <span class="font-normal text-muted">· Pentavox, Budapest</span></p>
+          <p class="text-sm text-muted mt-1 leading-relaxed">Tíz év beágyazott termékfejlesztés különféle eszköztípusokon: kézi wellness eszközök, asztali műszerek, hangsegédek, biorezonancia hardware és orvosi berendezések. Közös tervezés villamosmérnök kollégákkal — a követelményektől és a kapcsolási rajztól, a firmware-en, prototípuson és iteratív finomításon át a gyártási folyamat kialakításáig. Egyik termékből 10 000 darabos sorozatgyártás lett. Később projektmenedzsment feladatokat is átvállaltam: közvetlen ügyféligény-felmérés és végponttól végpontig tartó szállítás felügyelete.</p>
+          <div class="flex flex-wrap gap-1.5 mt-2">
+            {['STM32', 'Atmel', 'nRF52', 'ESP32', 'Bluetooth/BLE', 'Kijelzővezérlők', 'MP3 integráció', 'SD kártya', 'C', 'Atollic TrueSTUDIO'].map(t => (
+              <span class="font-mono text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full bg-forest/10 text-forest-dark">{t}</span>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p class="font-semibold text-ink text-base leading-snug">Biztonságtechnikai hardware <span class="font-normal text-muted">· Pentavox, Budapest</span></p>
+          <p class="text-sm text-muted mt-1 leading-relaxed">Egyedi beágyazott eszközcsalád fizikai biztonsági rendszerekhez, börtönökben és a Paksi Atomerőműben telepítve. Az eszközök közé tartozott jel aggregátor (Ethernet + RS485 hálózat), oda-vissza beszélő (duplex interkom) egység és GSM jel detektor. Minden firmware RTOS alapokon, nulláról írva. A rendszerhez PC-s megfigyelő szoftver is tartozott, amely az eszközök állapotát interaktív alaprajzon jelenítette meg.</p>
+          <div class="flex flex-wrap gap-1.5 mt-2">
+            {['STM32', 'RTOS', 'Ethernet', 'RS485', 'GSM', 'C', 'PCB tervezés'].map(t => (
+              <span class="font-mono text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full bg-forest/10 text-forest-dark">{t}</span>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p class="font-semibold text-ink text-base leading-snug">Fetaphon — magzati szívhang monitor <span class="font-normal text-muted">· Orvosi eszköz</span></p>
+          <p class="text-sm text-muted mt-1 leading-relaxed">Akkumulátoros kézi eszköz kismamáknak a magzati szívhang monitorozásához. Firmware fejlesztés egyedi PCB-re: ultrahangos szenzor integráció, hangkimenet, kijelző és akkumulátorkezelés. Megbízható egykezes működésre tervezve.</p>
+          <div class="flex flex-wrap gap-1.5 mt-2">
+            {['STM32', 'Ultrahang', 'Akkumulátorkezelés', 'Kijelző', 'Hang', 'C'].map(t => (
+              <span class="font-mono text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full bg-forest/10 text-forest-dark">{t}</span>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Hogyan dolgozom -->
+      <h2 class="font-display font-bold text-2xl md:text-3xl tracking-tight text-ink mb-6">Hogyan dolgozom</h2>
+      <p class="text-muted text-base leading-relaxed mb-16">
+        A leghasznosabb akkor vagyok, ha korán bevonnak — ideálisan még a PCB véglegesítése előtt. Szorosan együttdolgozom a villamosmérnökkel a kapcsolási rajzon, firmware-t írok nulláról vagy adaptálom a meglévő kódot, kezelem a periféria integrációt (kijelzők, BLE modulok, hang, szenzorok), és megépítem a teszteléshez és kalibrációhoz szükséges szoftvereszközöket. Rendszeresen végeztem ügyfél-kommunikációt is közvetlen: igényfelmérés, műszaki egyeztetések és technikai átadás — legyen szó a fejlesztőcsapatnak vagy a végfelhasználóknak. Teljes projektmenedzsmentet is vállalok, ha szükséges.
+      </p>
+
+      <!-- Stack -->
+      <h2 class="font-display font-bold text-2xl md:text-3xl tracking-tight text-ink mb-8">Stack</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6 mb-16">
+        <div>
+          <h3 class="font-mono text-[11px] uppercase tracking-widest text-amber mb-3">Mikrokontrollerek</h3>
+          <ul class="space-y-1.5 text-muted text-sm leading-relaxed">
+            <li>STM32 — Atollic TrueSTUDIO, HAL</li>
+            <li>Atmel (AVR, SAM)</li>
+            <li>ESP32 — Wi-Fi, BLE</li>
+            <li>nRF52 — BLE</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-mono text-[11px] uppercase tracking-widest text-amber mb-3">Perifériák</h3>
+          <ul class="space-y-1.5 text-muted text-sm leading-relaxed">
+            <li>Bluetooth / BLE modulok</li>
+            <li>Érintőképernyő és kijelzővezérlők</li>
+            <li>MP3 chip, hangkimenet</li>
+            <li>SD kártya tárolás</li>
+            <li>Akkumulátorkezelés</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-mono text-[11px] uppercase tracking-widest text-amber mb-3">Hardware</h3>
+          <ul class="space-y-1.5 text-muted text-sm leading-relaxed">
+            <li>PCB tervezés — EAGLE, Altium</li>
+            <li>Prototípus építés és pad tesztelés</li>
+            <li>Gyártási folyamat támogatás</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Showcase -->
+      <h2 class="font-display font-bold text-2xl md:text-3xl tracking-tight text-ink mb-8">Showcase</h2>
+      <div class="space-y-4 mb-6">
+
+        <div class="rounded-2xl overflow-hidden">
+          <img
+            src="/images/projects/fetaphon-desktop-showcase.webp"
+            alt="Fetaphon asztali magzati szívhangfigyelő — központi egység két félgömb szenzorral és pánttal"
+            class="w-full"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="rounded-2xl overflow-hidden">
+          <img
+            src="/images/projects/fetaphon_hendheld_showcase.webp"
+            alt="Fetaphon kézi szenzorok — több egység sorozatgyártásban, egy nyitott PCB-vel"
+            class="w-full"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="rounded-2xl overflow-hidden">
+          <img
+            src="/images/projects/firmware-embedded-showcase.webp"
+            alt="Biorezonanciás kézi eszköz — robbantott nézet PCB-vel, kijelzővel, házzal és akkumulátorral"
+            class="w-full"
+            loading="lazy"
+          />
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</CompetencyPage>
+
+<style>
+  .bg-c-fw {
+    background:
+      radial-gradient(circle at 50% 50%, rgba(232,163,60,0.12) 0%, transparent 60%),
+      linear-gradient(135deg, #0F2A1F 0%, #1F4A35 100%);
+  }
+</style>

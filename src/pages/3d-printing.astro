@@ -1,0 +1,23 @@
+---
+import CompetencyPage from '../components/CompetencyPage.astro';
+import { useTranslations } from '../i18n/utils';
+const t = useTranslations('en');
+---
+<CompetencyPage
+  lang="en"
+  competency="3d-printing"
+  title={`${t('comp.print.title')} — David Molnar`}
+  description="Bambu X1C, up to 1,000-piece runs. Multi-color, PLA, PETG, ASA, ABS, carbon and glass fiber."
+  detail={t('comp.print.detail')}
+  tag={t('comp.print.tag')}
+  image="/images/competencies/print.webp"
+  fallbackClass="bg-c-3d"
+  altHref="/hu/3d-printing/"
+/>
+
+<style>
+  .bg-c-3d {
+    background:
+      conic-gradient(from 45deg at 50% 50%, #1F352B 0%, #2F4A3F 25%, #1F352B 50%, #2F4A3F 75%, #1F352B 100%);
+  }
+</style>

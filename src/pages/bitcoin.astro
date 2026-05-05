@@ -1,0 +1,131 @@
+---
+import CompetencyPage from '../components/CompetencyPage.astro';
+import { useTranslations } from '../i18n/utils';
+const t = useTranslations('en');
+---
+<CompetencyPage
+  lang="en"
+  competency="bitcoin"
+  title={`${t('comp.bitcoin.title')} — David Molnar`}
+  description="8 years of Bitcoin development. Former Wasabi CTO, CoinJoin protocol, Ginger Wallet lead. Privacy, security, non-custodial."
+  detail={t('comp.bitcoin.detail')}
+  tag={t('comp.bitcoin.tag')}
+  image="/images/competencies/bitcoin.webp"
+  fallbackClass="bg-c-btc"
+  altHref="/hu/bitcoin/"
+>
+  <!-- Rich intro with links -->
+  <p slot="detail" class="text-lg md:text-xl leading-relaxed text-muted">
+    Active Bitcoin developer since October 2018 — I joined Wasabi Wallet on the day of the 1.0 release and worked directly alongside <a href="https://github.com/nopara73" target="_blank" rel="noopener noreferrer" class="text-forest underline underline-offset-2 hover:text-amber-dark">nopara73</a> and <a href="https://github.com/lontivero" target="_blank" rel="noopener noreferrer" class="text-forest underline underline-offset-2 hover:text-amber-dark">Lucas Ontivero</a>. Over the years many experienced developers joined and an exceptional team came together — at our peak we were nearly 35 people at the company. Over six years I grew from contributor to team lead to CTO, accumulating 4,600+ commits across the protocol and client. The core of that work was the WabiSabi CoinJoin protocol: zero-knowledge credential issuance and blind signatures at scale. When zkSNACKs closed, I joined Ginger Wallet from day one to continue the work independently.
+  </p>
+
+  <!-- Services & Community -->
+  <section slot="extra" class="bg-paper border-t border-ink/5">
+    <div class="max-w-3xl mx-auto px-6 md:px-8 py-16 md:py-20">
+
+      <h2 class="font-display font-bold text-2xl md:text-3xl tracking-tight text-ink mb-8">What I can help with</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10 mb-16">
+        <div>
+          <h3 class="font-mono text-[11px] uppercase tracking-widest text-amber mb-3">Technical setup</h3>
+          <ul class="space-y-2 text-muted text-base leading-relaxed">
+            <li>Wallet generation and safe seed-phrase storage</li>
+            <li>Hardware wallet onboarding (Trezor, Coldcard, Ledger, BitBox02)</li>
+            <li>CoinJoin privacy via Ginger Wallet or Wasabi Wallet</li>
+            <li>Lightning Network setup</li>
+            <li>Full node installation and configuration</li>
+            <li>Bitcoin software integration across systems</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-mono text-[11px] uppercase tracking-widest text-amber mb-3">Transactions & adoption</h3>
+          <ul class="space-y-2 text-muted text-base leading-relaxed">
+            <li>Buy, sell, and convert to fiat — exchanges and non-custodial options</li>
+            <li>Sending and receiving correctly and securely</li>
+            <li>Bitcoin acceptance for merchants</li>
+            <li>Multi-sig setup and key management</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-mono text-[11px] uppercase tracking-widest text-amber mb-3">For teams & products</h3>
+          <ul class="space-y-2 text-muted text-base leading-relaxed">
+            <li>Wallet software development — as contributor or full developer</li>
+            <li>Bitcoin privacy consulting for products and protocols</li>
+            <li>CoinJoin and WabiSabi implementation guidance</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="font-display font-bold text-2xl md:text-3xl tracking-tight text-ink mb-4">Community</h2>
+      <p class="text-muted text-base leading-relaxed mb-8">
+        Regular guest on the <a href="https://www.youtube.com/@huszonegy-bitcoin-podcast" target="_blank" rel="noopener noreferrer" class="text-forest underline underline-offset-2 hover:text-amber-dark">21 Bitcoin podcast</a>. Speaker at Bitcoin meetups and Hungarian Bitcoin conferences, including Bitcoin Miskolc and Bitcoin Prague.
+      </p>
+
+      <h3 class="font-mono text-[11px] uppercase tracking-widest text-amber mb-4">English — talks & interviews</h3>
+      <ul class="space-y-3 mb-8">
+        {[
+          { href: 'https://youtu.be/tLOMcU8MhWM', title: 'Bitcoin 2019: Recent Privacy Trends & Wasabi Wallet', channel: 'Bitcoin Magazine' },
+          { href: 'https://youtu.be/JtDY7Gb-L5s', title: 'MIT Bitcoin Expo 2019 — Wasabi Wallet: Unfairly Private', channel: 'MIT Bitcoin Club' },
+          { href: 'https://youtu.be/wP_TFs7RUYE', title: 'MIT Bitcoin Expo Interview with the zkSNACKs Team', channel: 'CryptoLiveLeak' },
+          { href: 'https://youtu.be/4CyEFWcsQMQ', title: "Bitcoin's Valentine #2 — Coin shuffling AMA with Wasabi", channel: 'Open Blockchain' },
+        ].map(v => (
+          <li>
+            <a href={v.href} target="_blank" rel="noopener noreferrer" class="group flex items-start gap-3 rounded-xl border border-ink/8 px-4 py-3 hover:border-forest/30 hover:bg-forest/5 transition-colors">
+              <svg class="mt-0.5 shrink-0 text-amber" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <span class="flex flex-col">
+                <span class="text-sm font-medium text-ink group-hover:text-forest transition-colors leading-snug">{v.title}</span>
+                <span class="text-xs text-muted mt-0.5">{v.channel}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <h3 class="font-mono text-[11px] uppercase tracking-widest text-amber mb-4">Hungarian — podcast & demos</h3>
+      <ul class="space-y-3 mb-16">
+        {[
+          { href: 'https://youtu.be/YvbvA8f8pw4', title: 'Miért fontos a pénzügyi privacy? – Ginger Wallet & Coinjoin bemutató', channel: 'HUSZONEGY Bitcoin podcast' },
+          { href: 'https://youtu.be/u8fLiAlHEXI', title: 'Ginger wallet — bitcoin tárca bemutató', channel: 'HUSZONEGY Bitcoin podcast' },
+          { href: 'https://youtu.be/AWOY70zi3MQ', title: 'Bitcoin vásárlás: hol ajánljuk, hol nem ajánljuk', channel: 'HUSZONEGY Bitcoin podcast' },
+          { href: 'https://youtu.be/ROmHdx_gpY4', title: 'Védd ki a csalásokat! — Tippek, technikák, tanulságos esetek', channel: 'HUSZONEGY Bitcoin podcast' },
+        ].map(v => (
+          <li>
+            <a href={v.href} target="_blank" rel="noopener noreferrer" class="group flex items-start gap-3 rounded-xl border border-ink/8 px-4 py-3 hover:border-forest/30 hover:bg-forest/5 transition-colors">
+              <svg class="mt-0.5 shrink-0 text-amber" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <span class="flex flex-col">
+                <span class="text-sm font-medium text-ink group-hover:text-forest transition-colors leading-snug">{v.title}</span>
+                <span class="text-xs text-muted mt-0.5">{v.channel}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Consulting CTA -->
+      <div class="rounded-2xl bg-[#0F1A14] px-8 py-10 text-center">
+        <p class="font-display font-semibold text-xl text-paper mb-2">Consulting & mentoring</p>
+        <p class="text-paper/60 text-sm mb-6 max-w-md mx-auto">
+          Technical Bitcoin help only — no trading advice, no altcoins. From first steps (which wallet, how to store, how to buy) to power-user topics (CoinJoin, full node, multi-sig) and product-level privacy consulting.
+        </p>
+        <a
+          href="https://calendly.com/hello-davidmolnar/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-amber text-[#0F1A14] font-bold text-sm px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
+        >
+          Book a 30-min call →
+        </a>
+      </div>
+
+    </div>
+  </section>
+</CompetencyPage>
+
+<style>
+  .bg-c-btc {
+    background:
+      radial-gradient(circle at 30% 70%, #F7931A 0%, transparent 45%),
+      radial-gradient(circle at 70% 30%, #4A1F00 0%, transparent 50%),
+      linear-gradient(135deg, #2A1100 0%, #5C2D00 100%);
+  }
+</style>
