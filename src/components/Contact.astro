@@ -4,6 +4,48 @@ import { useTranslations, type Lang } from '../i18n/utils';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+// Public contact identifiers. Email + Nostr + PGP fingerprint.
+// PGP public key is served from /pgp.txt — drop the ASCII-armored file in /public.
+const EMAIL = 'hello@davidmolnar.dev';
+const NOSTR = 'npub1m5wnxshsq5q06hjha53h4f2vxm0d0rx4wcuxxw35uc9hnsap6myqhx3s8c';
+const PGP_FINGERPRINT = 'F079 0C08 68BD BAB8 EE33 F9CE 50FB 7FEB 00F9 7588';
+const PGP_FINGERPRINT_RAW = PGP_FINGERPRINT.replace(/\s+/g, '');
+const PGP_KEY_URL = '/pgp.txt';
+
+interface Pill {
+  label: string;
+  display: string;
+  copyValue: string;
+  href?: string;
+  monospace?: boolean;
+  truncateMobile?: boolean;
+  meta?: { label: string; href: string };
+}
+
+const pills: Pill[] = [
+  {
+    label: t('contact.email.label'),
+    display: EMAIL,
+    copyValue: EMAIL,
+    href: `mailto:${EMAIL}`,
+  },
+  {
+    label: t('contact.nostr.label'),
+    display: NOSTR,
+    copyValue: NOSTR,
+    monospace: true,
+    truncateMobile: true,
+  },
+  {
+    label: t('contact.pgp.label'),
+    display: PGP_FINGERPRINT,
+    copyValue: PGP_FINGERPRINT_RAW,
+    monospace: true,
+    truncateMobile: true,
+    meta: { label: t('contact.pgp.viewkey'), href: PGP_KEY_URL },
+  },
+];
 ---
 
 <section id="contact" class="bg-paper">
@@ -14,11 +56,78 @@ const t = useTranslations(lang);
     <p class="text-lg leading-relaxed text-muted mb-10">
       {t('contact.body')}
     </p>
-    <a
-      href="mailto:hello@davidmolnar.dev"
-      class="inline-flex items-center rounded-full bg-amber text-forest px-6 py-3 font-display font-medium text-base md:text-lg tracking-tight shadow-sm hover:bg-amber-dark transition-colors"
-    >
-      hello@davidmolnar.dev
-    </a>
+
+    <div class="space-y-3" data-copied-text={t('contact.copied')} data-copy-text={t('contact.copy')}>
+      {pills.map(p => (
+        <div class="group flex items-stretch rounded-2xl border border-ink/10 bg-cream/50 hover:border-forest/40 transition-colors overflow-hidden">
+          <div class="flex flex-col flex-1 min-w-0 px-5 py-3.5">
+            <span class="font-mono text-[10px] uppercase tracking-widest text-amber-dark mb-1">{p.label}</span>
+            {p.href
+              ? <a href={p.href} class={`text-ink hover:text-forest transition-colors break-all ${p.monospace ? 'font-mono text-sm' : 'text-base md:text-lg'} ${p.truncateMobile ? 'truncate md:break-all md:whitespace-normal' : ''}`}>{p.display}</a>
+              : <span class={`text-ink break-all ${p.monospace ? 'font-mono text-sm' : 'text-base md:text-lg'} ${p.truncateMobile ? 'truncate md:break-all md:whitespace-normal' : ''}`}>{p.display}</span>
+            }
+            {p.meta && (
+              <a href={p.meta.href} class="font-mono text-[11px] text-muted hover:text-forest transition-colors mt-1 inline-block">{p.meta.label} →</a>
+            )}
+          </div>
+          <button
+            type="button"
+            class="copy-btn shrink-0 px-5 border-l border-ink/10 bg-paper/40 hover:bg-amber/15 transition-colors flex items-center justify-center text-muted hover:text-forest-dark"
+            data-copy={p.copyValue}
+            aria-label={t('contact.copy')}
+            title={t('contact.copy')}
+          >
+            <svg class="copy-icon w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <svg class="check-icon w-5 h-5 hidden text-forest" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
+
+<script is:inline>
+  (() => {
+    const wrap = document.querySelector('[data-copied-text]');
+    if (!wrap) return;
+    const copiedText = wrap.dataset.copiedText || 'Copied';
+    const copyText = wrap.dataset.copyText || 'Copy';
+
+    wrap.querySelectorAll('.copy-btn').forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const value = btn.getAttribute('data-copy');
+        if (!value) return;
+        try {
+          await navigator.clipboard.writeText(value);
+        } catch {
+          const ta = document.createElement('textarea');
+          ta.value = value;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); } catch {}
+          document.body.removeChild(ta);
+        }
+        const copyIcon = btn.querySelector('.copy-icon');
+        const checkIcon = btn.querySelector('.check-icon');
+        copyIcon?.classList.add('hidden');
+        checkIcon?.classList.remove('hidden');
+        btn.setAttribute('aria-label', copiedText);
+        btn.setAttribute('title', copiedText);
+        setTimeout(() => {
+          copyIcon?.classList.remove('hidden');
+          checkIcon?.classList.add('hidden');
+          btn.setAttribute('aria-label', copyText);
+          btn.setAttribute('title', copyText);
+        }, 1500);
+      });
+    });
+  })();
+</script>

@@ -1,0 +1,30 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const sections = [
+  { id: 'c-bitcoin',   num: '01', tag: t('comp.bitcoin.tag'),   title: t('comp.bitcoin.title'),   body: t('comp.bitcoin.detail') },
+  { id: 'c-software',  num: '02', tag: t('comp.software.tag'),  title: t('comp.software.title'),  body: t('comp.software.detail') },
+  { id: 'c-firmware',  num: '03', tag: t('comp.firmware.tag'),  title: t('comp.firmware.title'),  body: t('comp.firmware.detail') },
+  { id: 'c-smarthome', num: '04', tag: t('comp.smarthome.tag'), title: t('comp.smarthome.title'), body: t('comp.smarthome.detail') },
+  { id: 'c-print',     num: '05', tag: t('comp.print.tag'),     title: t('comp.print.title'),     body: t('comp.print.detail') },
+];
+---
+
+<section class="bg-paper">
+  <div class="max-w-4xl mx-auto px-6 md:px-8 py-24 md:py-32 space-y-20 md:space-y-28">
+    {sections.map(s => (
+      <article id={s.id} class="scroll-mt-24">
+        <div class="flex items-baseline gap-4 mb-5">
+          <span class="font-mono text-[11px] uppercase tracking-widest text-amber-dark">{s.num}</span>
+          <span class="h-px bg-ink/15 flex-1"></span>
+        </div>
+        <h3 class="font-display font-semibold text-2xl md:text-[28px] tracking-tight text-ink mb-6 max-w-3xl">{s.title}</h3>
+        <p class="text-muted leading-relaxed text-[15px] md:text-base max-w-2xl">{s.body}</p>
+      </article>
+    ))}
+  </div>
+</section>
