@@ -17,10 +17,22 @@ const year = new Date().getFullYear();
     </div>
 
     <!-- Center: Bitcoin accepted -->
-    <span class="flex items-center gap-1.5 text-amber font-semibold">
-      <span class="text-sm leading-none">₿</span>
-      {t('footer.bitcoin')}
-    </span>
+    <!-- TODO: replace href with merchant directory listing URL when ready -->
+    <a
+      href="https://btcmap.org"
+      target="_blank"
+      rel="noopener noreferrer"
+      title={t('footer.bitcoin')}
+      class="opacity-90 hover:opacity-100 transition-opacity"
+    >
+      <img
+        src="/images/bitcoin-accepted-here.svg"
+        alt="Bitcoin Accepted Here"
+        width="160"
+        height="51"
+        class="h-9 w-auto"
+      />
+    </a>
 
     <!-- Right: source -->
     <span>

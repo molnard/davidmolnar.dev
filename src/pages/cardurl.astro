@@ -1,0 +1,26 @@
+---
+import { cardUrlTarget } from '../config/cardurl';
+
+const targetUrl = new URL(cardUrlTarget, Astro.site).toString();
+const entryUrl = new URL('/cardurl', Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0; url=${targetUrl}`} />
+    <link rel="canonical" href={entryUrl} />
+    <title>Redirecting...</title>
+    <script is:inline define:vars={{ targetUrl }}>
+      window.location.replace(targetUrl);
+    </script>
+  </head>
+  <body>
+    <p>
+      Redirecting to <a href={targetUrl}>{targetUrl}</a>.
+    </p>
+  </body>
+</html>
