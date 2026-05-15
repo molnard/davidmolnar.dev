@@ -107,7 +107,7 @@ export const ui = {
     'contact.pgp.label': 'PGP',
     'contact.pgp.viewkey': 'View public key',
 
-    'footer.legal': 'Sole trader · Budapest, Hungary',
+    'footer.legal': 'Sole trader · Budapest, Kárpát utca 54, Hungary',
     'footer.bitcoin': 'Bitcoin accepted',
     'footer.built': 'Built with care. Source on',
 
@@ -225,7 +225,7 @@ export const ui = {
     'contact.pgp.label': 'PGP',
     'contact.pgp.viewkey': 'Publikus kulcs megtekintése',
 
-    'footer.legal': 'Egyéni vállalkozó · Budapest, Magyarország',
+    'footer.legal': 'Egyéni vállalkozó · Budapest, Kárpát utca 54',
     'footer.bitcoin': 'Bitcoin elfogadva',
     'footer.built': 'Készítve gonddal. Forrás:',
 
