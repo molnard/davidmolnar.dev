@@ -7,16 +7,13 @@ interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-// Anything in /public is served verbatim — at build time we check which competency images exist.
 const competenciesDir = path.resolve('public/images/competencies');
 const exts = ['webp', 'jpg', 'jpeg', 'png'];
 
 function findImage(slug: string): string | null {
   for (const ext of exts) {
     const file = path.join(competenciesDir, `${slug}.${ext}`);
-    if (fs.existsSync(file)) {
-      return `/images/competencies/${slug}.${ext}`;
-    }
+    if (fs.existsSync(file)) return `/images/competencies/${slug}.${ext}`;
   }
   return null;
 }
@@ -31,14 +28,16 @@ interface Competency {
   fallback: string;
   image: string | null;
   hero?: boolean;
+  num: string;
+  numColor: string;
 }
 
 const items: Competency[] = [
-  { slug: 'bitcoin',      urlSlug: 'bitcoin',      tag: t('comp.bitcoin.tag'),   title: t('comp.bitcoin.title'),   short: t('comp.bitcoin.short'),   alt: t('comp.bitcoin.alt'),   fallback: 'bg-c-btc', image: findImage('bitcoin'),   hero: true },
-  { slug: 'software',     urlSlug: 'software',     tag: t('comp.software.tag'),  title: t('comp.software.title'),  short: t('comp.software.short'),  alt: t('comp.software.alt'),  fallback: 'bg-c-sw',  image: findImage('software') },
-  { slug: 'firmware',     urlSlug: 'firmware',     tag: t('comp.firmware.tag'),  title: t('comp.firmware.title'),  short: t('comp.firmware.short'),  alt: t('comp.firmware.alt'),  fallback: 'bg-c-fw',  image: findImage('firmware') },
-  { slug: 'smarthome',    urlSlug: 'smarthome',    tag: t('comp.smarthome.tag'), title: t('comp.smarthome.title'), short: t('comp.smarthome.short'), alt: t('comp.smarthome.alt'), fallback: 'bg-c-sh',  image: findImage('smarthome') },
-  { slug: 'print',        urlSlug: '3d-printing',  tag: t('comp.print.tag'),     title: t('comp.print.title'),     short: t('comp.print.short'),     alt: t('comp.print.alt'),     fallback: 'bg-c-3d',  image: findImage('print') },
+  { slug: 'bitcoin',   urlSlug: 'bitcoin',     tag: t('comp.bitcoin.tag'),   title: t('comp.bitcoin.title'),   short: t('comp.bitcoin.short'),   alt: t('comp.bitcoin.alt'),   fallback: 'bg-c-btc', image: findImage('bitcoin'),   hero: true, num: '1', numColor: '#F7931A' },
+  { slug: 'software',  urlSlug: 'software',    tag: t('comp.software.tag'),  title: t('comp.software.title'),  short: t('comp.software.short'),  alt: t('comp.software.alt'),  fallback: 'bg-c-sw',  image: findImage('software'),  num: '2', numColor: '#F7931A' },
+  { slug: 'firmware',  urlSlug: 'firmware',    tag: t('comp.firmware.tag'),  title: t('comp.firmware.title'),  short: t('comp.firmware.short'),  alt: t('comp.firmware.alt'),  fallback: 'bg-c-fw',  image: findImage('firmware'),  num: '3', numColor: '#F7931A' },
+  { slug: 'smarthome', urlSlug: 'smarthome',   tag: t('comp.smarthome.tag'), title: t('comp.smarthome.title'), short: t('comp.smarthome.short'), alt: t('comp.smarthome.alt'), fallback: 'bg-c-sh',  image: findImage('smarthome'), num: '4', numColor: '#F7931A' },
+  { slug: 'print',     urlSlug: '3d-printing', tag: t('comp.print.tag'),     title: t('comp.print.title'),     short: t('comp.print.short'),     alt: t('comp.print.alt'),     fallback: 'bg-c-3d',  image: findImage('print'),     num: '5', numColor: '#F7931A' },
 ];
 ---
 
@@ -48,31 +47,37 @@ const items: Competency[] = [
       {t('comp.title')}
     </h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      {items.map(c => (
+    <div class="comp-list">
+      {items.map((c, i) => (
         <a
           href={lang === 'hu' ? `/hu/${c.urlSlug}/` : `/${c.urlSlug}/`}
-          class={`group relative block rounded-3xl overflow-hidden ${c.hero ? 'md:col-span-2 aspect-[16/10] md:aspect-[21/8]' : 'aspect-[4/3]'}`}
+          class={`comp-card group ${c.hero ? 'comp-hero' : ''}`}
+          style={`--i: ${i}`}
         >
-          {c.image
-            ? <img
-                src={c.image}
-                alt={c.alt}
-                loading={c.hero ? 'eager' : 'lazy'}
-                {...(c.hero ? { fetchpriority: 'high' } : {})}
-                decoding="async"
-                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-              />
-            : <div class={`absolute inset-0 ${c.fallback} transition-transform duration-700 ease-out group-hover:scale-[1.06]`} role="img" aria-label={c.alt}></div>
-          }
-          <div class="absolute inset-0 bg-gradient-to-t from-[#0F1A14]/85 via-[#0F1A14]/30 to-transparent"></div>
+          {/* Left dark panel: number + text */}
+          <div class="comp-left">
+            <span class="comp-num" aria-hidden="true" style={`color: ${c.numColor}`}>{c.num}</span>
+            <div class="comp-body">
+              <span class="comp-tag">{c.tag}</span>
+              <h3 class="comp-title">{c.title}</h3>
+              <p class="comp-short">{c.short}</p>
+            </div>
+          </div>
 
-          <span class="absolute top-6 right-6 md:top-7 md:right-7 w-11 h-11 rounded-full bg-paper/15 backdrop-blur-md flex items-center justify-center text-paper text-lg transition-all duration-300 group-hover:bg-amber group-hover:text-forest-dark group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">↗</span>
-
-          <div class="relative z-10 h-full p-7 md:p-8 flex flex-col justify-end">
-            <span class="font-mono text-[10px] uppercase tracking-widest text-amber mb-3">{c.tag}</span>
-            <h3 class={`font-display font-bold tracking-tight text-paper mb-2 ${c.hero ? 'text-3xl md:text-5xl' : 'text-2xl md:text-3xl'}`}>{c.title}</h3>
-            <p class="text-paper/85 text-sm md:text-[15px] leading-relaxed max-w-2xl">{c.short}</p>
+          {/* Right: full-bleed image */}
+          <div class="comp-img">
+            {c.image
+              ? <img
+                  src={c.image}
+                  alt={c.alt}
+                  loading={c.hero ? 'eager' : 'lazy'}
+                  {...(c.hero ? { fetchpriority: 'high' } : {})}
+                  decoding="async"
+                  class="comp-img-el"
+                />
+              : <div class={`comp-img-el ${c.fallback}`} role="img" aria-label={c.alt}></div>
+            }
+            <span class="comp-arr" aria-hidden="true">↗</span>
           </div>
         </a>
       ))}
@@ -81,6 +86,169 @@ const items: Competency[] = [
 </section>
 
 <style>
+  /* ── List ── */
+  .comp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  /* ── Card: [left panel] [image] ── */
+  .comp-card {
+    display: grid;
+    grid-template-columns: 44% 56%;
+    height: 220px;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    text-decoration: none;
+
+    opacity: 0;
+    translate: 0 20px;
+    animation: card-in 0.45s ease forwards;
+    animation-delay: calc(var(--i) * 70ms + 80ms);
+  }
+
+  @media (min-width: 768px) {
+    .comp-card { height: 260px; }
+  }
+
+  /* mobile: stack vertically */
+  @media (max-width: 639px) {
+    .comp-card {
+      grid-template-columns: 1fr;
+      height: unset;
+    }
+    .comp-img {
+      aspect-ratio: 16 / 7;
+    }
+    .comp-left {
+      padding: 1.5rem !important;
+    }
+    .comp-num {
+      font-size: 2.5rem !important;
+    }
+  }
+
+  @keyframes card-in {
+    to { opacity: 1; translate: 0 0; }
+  }
+
+  /* ── Left panel: number + text ── */
+  .comp-left {
+    background: #182318;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 2rem 1.75rem 2rem 2rem;
+    gap: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .comp-left { padding: 2.5rem 2rem 2.5rem 2.5rem; gap: 1.5rem; }
+  }
+
+  /* ── Large number ── */
+  .comp-num {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.04em;
+    opacity: 0.75;
+    flex-shrink: 0;
+    align-self: flex-start;
+    padding-top: 0.1em;
+    transition: opacity 0.3s ease;
+  }
+  @media (min-width: 768px) {
+    .comp-num { font-size: 4.5rem; }
+  }
+  .comp-card:hover .comp-num {
+    opacity: 1;
+  }
+
+  /* ── Text block ── */
+  .comp-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .comp-tag {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #E8A33C;
+  }
+
+  .comp-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: rgba(245, 240, 232, 1);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .comp-hero .comp-title {
+    font-size: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .comp-title            { font-size: 1.5rem; }
+    .comp-hero .comp-title { font-size: 2rem; }
+  }
+
+  .comp-short {
+    font-size: 0.8125rem;
+    color: rgba(245, 240, 232, 0.5);
+    line-height: 1.6;
+  }
+  @media (min-width: 768px) {
+    .comp-short { font-size: 0.875rem; }
+  }
+
+  .comp-arr {
+    position: absolute;
+    top: 0.875rem;
+    right: 0.875rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: rgba(245, 240, 232, 0.15);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: rgba(245, 240, 232, 0.9);
+    transition: background 0.25s ease, color 0.25s ease, translate 0.25s ease;
+  }
+  .comp-card:hover .comp-arr {
+    background: #E8A33C;
+    color: #0F1A14;
+    translate: 2px -2px;
+  }
+
+  /* ── Image panel — full bleed ── */
+  .comp-img {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .comp-img-el {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.6s ease;
+  }
+  .comp-card:hover .comp-img-el {
+    scale: 1.04;
+  }
+
+  /* ── Fallback gradients ── */
   .bg-c-btc {
     background:
       radial-gradient(circle at 30% 70%, #F7931A 0%, transparent 45%),
@@ -98,11 +266,9 @@ const items: Competency[] = [
       linear-gradient(135deg, #0F2A1F 0%, #1F4A35 100%);
   }
   .bg-c-sh {
-    background:
-      linear-gradient(135deg, #1A2E25 0%, #3F5F52 50%, #B8801F 100%);
+    background: linear-gradient(135deg, #1A2E25 0%, #3F5F52 50%, #B8801F 100%);
   }
   .bg-c-3d {
-    background:
-      conic-gradient(from 45deg at 50% 50%, #1F352B 0%, #2F4A3F 25%, #1F352B 50%, #2F4A3F 75%, #1F352B 100%);
+    background: conic-gradient(from 45deg at 50% 50%, #1F352B 0%, #2F4A3F 25%, #1F352B 50%, #2F4A3F 75%, #1F352B 100%);
   }
 </style>
