@@ -51,14 +51,14 @@ const items: Competency[] = [
       {items.map((c, i) => (
         <a
           href={lang === 'hu' ? `/hu/${c.urlSlug}/` : `/${c.urlSlug}/`}
-          class={`comp-card group ${c.hero ? 'comp-hero' : ''}`}
+          class="comp-card group"
           style={`--i: ${i}`}
         >
           {/* Left dark panel: number + text */}
           <div class="comp-left">
             <span class="comp-num" aria-hidden="true" style={`color: ${c.numColor}`}>{c.num}</span>
             <div class="comp-body">
-              <span class="comp-tag">{c.tag}</span>
+              <span class="comp-tag">{c.tag.replace(/^\d+\s*[–—-]\s*/, '')}</span>
               <h3 class="comp-title">{c.title}</h3>
               <p class="comp-short">{c.short}</p>
             </div>
@@ -109,7 +109,7 @@ const items: Competency[] = [
   }
 
   @media (min-width: 768px) {
-    .comp-card { height: 260px; }
+    .comp-card { height: 250px; }
   }
 
   /* mobile: stack vertically */
@@ -138,12 +138,12 @@ const items: Competency[] = [
     background: #182318;
     display: flex;
     flex-direction: row;
-    align-items: stretch;
+    align-items: flex-start;
     padding: 2rem 1.75rem 2rem 2rem;
     gap: 1.25rem;
   }
   @media (min-width: 768px) {
-    .comp-left { padding: 2.5rem 2rem 2.5rem 2.5rem; gap: 1.5rem; }
+    .comp-left { padding: 2.25rem 2rem 2.25rem 2.5rem; gap: 1.5rem; }
   }
 
   /* ── Large number ── */
@@ -155,8 +155,8 @@ const items: Competency[] = [
     letter-spacing: -0.04em;
     opacity: 0.75;
     flex-shrink: 0;
-    align-self: flex-start;
-    padding-top: 0.1em;
+    /* align top of number with top of tag text */
+    margin-top: -0.1em;
     transition: opacity 0.3s ease;
   }
   @media (min-width: 768px) {
@@ -170,7 +170,7 @@ const items: Competency[] = [
   .comp-body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0.4rem;
     min-width: 0;
     flex: 1;
@@ -185,18 +185,14 @@ const items: Competency[] = [
   }
 
   .comp-title {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 700;
     color: rgba(245, 240, 232, 1);
     line-height: 1.2;
     letter-spacing: -0.02em;
   }
-  .comp-hero .comp-title {
-    font-size: 1.5rem;
-  }
   @media (min-width: 768px) {
-    .comp-title            { font-size: 1.5rem; }
-    .comp-hero .comp-title { font-size: 2rem; }
+    .comp-title { font-size: 1.25rem; }
   }
 
   .comp-short {
