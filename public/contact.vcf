@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Molnar;David;;;
+FN:Molnár Dávid
+ORG:davidmolnar.dev
+TITLE:Software Developer
+ROLE:Software Developer
+TEL;TYPE=CELL:+36705950579
+EMAIL;TYPE=INTERNET:hello@davidmolnar.dev
+URL:https://davidmolnar.dev
+PHOTO;VALUE=URI:https://davidmolnar.dev/images/david-molnar-contact.jpg
+ADR;TYPE=HOME:;;;;;;Hungary
+CATEGORIES:Software Developer,3D Printing,Bitcoin Privacy,Ginger Wallet,Wasabi Wallet
+END:VCARD

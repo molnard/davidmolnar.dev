@@ -1,0 +1,110 @@
+---
+import '../styles/global.css';
+
+const canonicalURL = new URL('/addcontact', Astro.site).toString();
+const siteURL = new URL('/', Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Molnár Dávid névjegyoldala. Névjegy mentése telefonra vCard fájlból."
+    />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content="Molnár Dávid névjegye" />
+    <meta
+      property="og:description"
+      content="Molnár Dávid elérhetőségei és letölthető vCard névjegye."
+    />
+    <title>Molnár Dávid névjegye</title>
+  </head>
+  <body class="min-h-screen bg-paper text-ink font-sans antialiased">
+    <main class="min-h-screen px-5 py-8 flex items-center justify-center">
+      <section class="w-full max-w-md">
+        <div class="mb-7">
+          <img
+            src="/images/david-molnar-contact.jpg"
+            alt="Molnár Dávid"
+            width="160"
+            height="160"
+            class="mb-5 size-28 rounded-full object-cover ring-4 ring-cream"
+          />
+          <p class="font-mono text-xs uppercase tracking-widest text-forest">Névjegy</p>
+          <h1 class="mt-3 font-display text-4xl font-semibold text-ink">Molnár Dávid</h1>
+          <p class="mt-2 text-muted">davidmolnar.dev</p>
+        </div>
+
+        <dl class="divide-y divide-ink/10 border-y border-ink/10">
+          <div class="py-4">
+            <dt class="text-xs font-medium uppercase tracking-wide text-muted">Email</dt>
+            <dd class="mt-1 text-lg">
+              <a class="text-forest hover:text-forest-dark" href="mailto:hello@davidmolnar.dev">
+                hello@davidmolnar.dev
+              </a>
+            </dd>
+          </div>
+          <div class="py-4">
+            <dt class="text-xs font-medium uppercase tracking-wide text-muted">Telefon</dt>
+            <dd class="mt-1 text-lg">
+              <a class="text-forest hover:text-forest-dark" href="tel:+36705950579">
+                +36 70 595 0579
+              </a>
+            </dd>
+          </div>
+          <div class="py-4">
+            <dt class="text-xs font-medium uppercase tracking-wide text-muted">Cím</dt>
+            <dd class="mt-1 text-lg"></dd>
+          </div>
+        </dl>
+
+        <div class="mt-6">
+          <p class="text-xs font-medium uppercase tracking-wide text-muted">Kompetenciák</p>
+          <ul class="mt-3 flex flex-wrap gap-2">
+            <li class="rounded-md bg-cream px-3 py-1.5 text-sm text-ink">Software developer</li>
+            <li class="rounded-md bg-cream px-3 py-1.5 text-sm text-ink">3D printing</li>
+            <li class="rounded-md bg-cream px-3 py-1.5 text-sm text-ink">Bitcoin privacy</li>
+            <li class="rounded-md bg-cream px-3 py-1.5 text-sm text-ink">Ginger Wallet</li>
+            <li class="rounded-md bg-cream px-3 py-1.5 text-sm text-ink">Wasabi Wallet</li>
+          </ul>
+        </div>
+
+        <div class="mt-7 grid gap-3">
+          <a
+            href="/contact.vcf"
+            download="Molnar-David.vcf"
+            class="inline-flex min-h-12 items-center justify-center rounded-md bg-forest px-5 py-3 text-center font-semibold text-paper transition-colors hover:bg-forest-dark focus:outline-none focus:ring-2 focus:ring-forest focus:ring-offset-2 focus:ring-offset-paper"
+          >
+            Névjegy mentése
+          </a>
+          <div class="grid grid-cols-3 gap-2">
+            <a
+              class="inline-flex min-h-11 items-center justify-center rounded-md border border-ink/15 px-3 text-sm font-medium text-ink transition-colors hover:border-forest hover:text-forest"
+              href="tel:+36705950579"
+            >
+              Hívás
+            </a>
+            <a
+              class="inline-flex min-h-11 items-center justify-center rounded-md border border-ink/15 px-3 text-sm font-medium text-ink transition-colors hover:border-forest hover:text-forest"
+              href="mailto:hello@davidmolnar.dev"
+            >
+              Email
+            </a>
+            <a
+              class="inline-flex min-h-11 items-center justify-center rounded-md border border-ink/15 px-3 text-sm font-medium text-ink transition-colors hover:border-forest hover:text-forest"
+              href={siteURL}
+            >
+              Weboldal
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
