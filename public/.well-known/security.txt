@@ -1,0 +1,5 @@
+Contact: mailto:hello@davidmolnar.dev
+Encryption: https://davidmolnar.dev/pgp.txt
+Preferred-Languages: en, hu
+Canonical: https://davidmolnar.dev/.well-known/security.txt
+Expires: 2027-06-08T23:59:59Z
