@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">License plate monitoring system architecture</title>
+  <desc id="desc">Block diagram showing camera modules, the server service, administration and operator interfaces, and NVR integration for alarms and video frame text tagging.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F1A14"/>
+      <stop offset="1" stop-color="#17251D"/>
+    </linearGradient>
+    <linearGradient id="server" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#244B37"/>
+      <stop offset="1" stop-color="#13251A"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-25%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#000" flood-opacity=".28"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M2 2 L10 6 L2 10 Z" fill="#E8A33C"/>
+    </marker>
+    <style>
+      .title{font-family:Poppins,Inter,Arial,sans-serif;font-size:34px;font-weight:700;fill:#F8F5F0}
+      .subtitle{font-family:Poppins,Inter,Arial,sans-serif;font-size:17px;font-weight:500;fill:rgba(248,245,240,.72)}
+      .eyebrow{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;fill:#E8A33C}
+      .h{font-family:Poppins,Inter,Arial,sans-serif;font-size:24px;font-weight:700;fill:#F8F5F0}
+      .p{font-family:Poppins,Inter,Arial,sans-serif;font-size:15px;font-weight:500;fill:rgba(248,245,240,.70)}
+      .chip{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;font-weight:700;fill:#182318}
+      .box{fill:rgba(248,245,240,.075);stroke:rgba(248,245,240,.22);stroke-width:1.5}
+      .server{fill:url(#server);stroke:#E8A33C;stroke-width:2.5}
+      .flow{fill:none;stroke:#E8A33C;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+      .softflow{fill:none;stroke:rgba(248,245,240,.42);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+      .divider{stroke:rgba(248,245,240,.18);stroke-width:1}
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" rx="28" fill="url(#bg)"/>
+
+  <text x="64" y="74" class="eyebrow">System architecture</text>
+  <text x="64" y="116" class="title">License Plate Monitoring System</text>
+  <text x="64" y="146" class="subtitle">Event processing, operator workflows, alarm generation, and NVR text overlay integration</text>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="210" width="260" height="270" rx="22" class="box"/>
+    <text x="94" y="254" class="eyebrow">Input layer</text>
+    <text x="94" y="292" class="h">Camera Modules</text>
+    <text x="94" y="326" class="p">IP camera endpoints</text>
+    <text x="94" y="352" class="p">Plate recognition events</text>
+    <text x="94" y="378" class="p">Device state monitoring</text>
+    <rect x="94" y="416" width="156" height="30" rx="15" fill="#E8A33C"/>
+    <text x="112" y="436" class="chip">HUNDREDS OF CAMERAS</text>
+
+    <rect x="410" y="190" width="380" height="310" rx="28" class="server"/>
+    <text x="450" y="240" class="eyebrow">Application core</text>
+    <text x="450" y="282" class="h" font-size="30">Server Service</text>
+    <text x="450" y="318" class="p">ASP.NET Core service running as a Windows Service</text>
+    <line x1="450" y1="344" x2="750" y2="344" class="divider"/>
+    <text x="450" y="380" class="p">Event normalization and filtering</text>
+    <text x="450" y="410" class="p">Watchlist matching and persistence</text>
+    <text x="450" y="440" class="p">Background workers and integration orchestration</text>
+
+    <rect x="894" y="188" width="310" height="128" rx="22" class="box"/>
+    <text x="924" y="232" class="eyebrow">Configuration</text>
+    <text x="924" y="270" class="h">Admin Interface</text>
+    <text x="924" y="296" class="p">Cameras, users, roles, mappings</text>
+
+    <rect x="894" y="350" width="310" height="128" rx="22" class="box"/>
+    <text x="924" y="394" class="eyebrow">Operations</text>
+    <text x="924" y="432" class="h">Operator Interface</text>
+    <text x="924" y="458" class="p">Watchlists, CSV import/export, events</text>
+
+    <rect x="410" y="560" width="380" height="104" rx="22" class="box"/>
+    <text x="450" y="603" class="eyebrow">External system</text>
+    <text x="450" y="640" class="h">NVR Integration</text>
+
+    <rect x="894" y="548" width="310" height="116" rx="22" class="box"/>
+    <text x="924" y="590" class="eyebrow">Outputs</text>
+    <text x="924" y="626" class="h">Alarm + Video Tagging</text>
+    <text x="924" y="652" class="p">Alarm generation and video frame text tagging</text>
+  </g>
+
+  <path d="M324 345 C360 345 370 345 404 345" class="flow"/>
+  <path d="M790 262 C830 250 850 250 888 252" class="softflow"/>
+  <path d="M888 414 C850 414 830 414 790 414" class="softflow"/>
+  <path d="M600 500 L600 554" class="flow"/>
+  <path d="M790 610 C832 610 850 606 888 606" class="flow"/>
+
+  <text x="338" y="323" class="eyebrow">events</text>
+  <text x="816" y="232" class="eyebrow">manage</text>
+  <text x="816" y="395" class="eyebrow">use</text>
+  <text x="620" y="535" class="eyebrow">alerts</text>
+  <text x="812" y="588" class="eyebrow">tagging</text>
+</svg>
