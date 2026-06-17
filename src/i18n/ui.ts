@@ -10,12 +10,13 @@ export const ui = {
     'nav.projects': 'Projects',
     'nav.contact': 'Contact',
 
-    'hero.eyebrow': 'David Molnar — software · hardware · Bitcoin · open source',
-    'hero.headline': 'Software, hardware, and Bitcoin privacy tools.',
+    'hero.eyebrow': 'Hi, I am David Molnar',
+    'hero.headline': 'I build useful things with software, hardware, and Bitcoin.',
     'hero.sub':
-      'Senior software engineer with 15+ years building software, 8 of them on Bitcoin privacy. Former CTO at Wasabi Wallet, now an independent contractor.',
-    'hero.cta.work': 'See my work',
-    'hero.cta.contact': 'Get in touch',
+      'I am a senior software engineer with 15+ years of hands-on work behind me, including 8 years in Bitcoin privacy. I spent six years at Wasabi Wallet, eventually as CTO; today I work independently on software, hardware, and Bitcoin projects that are worth building properly.',
+    'hero.cta.work': 'Then see what I do',
+    'hero.cta.contact': 'Start a conversation',
+    'hero.photo.alt': 'David Molnar in Prague by the river at sunset',
 
     'comp.title': 'What I do',
 
@@ -129,12 +130,13 @@ export const ui = {
     'nav.projects': 'Projektek',
     'nav.contact': 'Kapcsolat',
 
-    'hero.eyebrow': 'David Molnar — szoftver · hardver · Bitcoin · open source',
-    'hero.headline': 'Szoftver, hardver és Bitcoin privacy eszközök.',
+    'hero.eyebrow': 'Szia, David Molnar vagyok',
+    'hero.headline': 'Hasznos dolgokat építek szoftverből, hardverből és Bitcoinból.',
     'hero.sub':
-      'Senior szoftverfejlesztő 15+ év tapasztalattal, ebből 8 év Bitcoin privacy fejlesztés. Korábban CTO a Wasabi Walletnél, ma független vállalkozó.',
-    'hero.cta.work': 'Munkáim',
+      'Senior szoftverfejlesztő vagyok 15+ év gyakorlati tapasztalattal, ebből 8 év Bitcoin privacy fejlesztéssel. Hat évet töltöttem a Wasabi Walletnél, végül CTO-ként; ma független vállalkozóként dolgozom szoftveres, hardveres és Bitcoin projekteken, ahol fontos a megbízható, átgondolt megvalósítás.',
+    'hero.cta.work': 'Amivel foglalkozom',
     'hero.cta.contact': 'Kapcsolat',
+    'hero.photo.alt': 'David Molnar Prágában a folyóparton naplementekor',
 
     'comp.title': 'Amivel foglalkozom',
 

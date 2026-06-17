@@ -5,6 +5,9 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://davidmolnar.dev',
   integrations: [tailwind()],
+  vite: {
+    cacheDir: '.cache/vite',
+  },
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'hu'],
