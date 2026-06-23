@@ -1,3 +1,33 @@
 /contact.vcf
   Content-Type: text/vcard; charset=utf-8
   Content-Disposition: attachment; filename="Molnar-David.vcf"
+  X-Robots-Tag: noindex, noarchive, nosnippet
+  Cache-Control: private, no-store
+
+/addcontact
+  X-Robots-Tag: noindex, noarchive, nosnippet
+  Cache-Control: private, no-store
+
+/addcontact/
+  X-Robots-Tag: noindex, noarchive, nosnippet
+  Cache-Control: private, no-store
+
+/hu/addcontact
+  X-Robots-Tag: noindex, noarchive, nosnippet
+  Cache-Control: private, no-store
+
+/hu/addcontact/
+  X-Robots-Tag: noindex, noarchive, nosnippet
+  Cache-Control: private, no-store
+
+/cardurl
+  X-Robots-Tag: noindex, noarchive, nosnippet
+  Cache-Control: private, no-store
+
+/cardurl/
+  X-Robots-Tag: noindex, noarchive, nosnippet
+  Cache-Control: private, no-store
+
+/nfc-card-url.txt
+  X-Robots-Tag: noindex, noarchive, nosnippet
+  Cache-Control: private, no-store

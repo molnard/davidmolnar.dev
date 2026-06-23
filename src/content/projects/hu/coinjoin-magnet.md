@@ -43,16 +43,13 @@ Az elrendezés nem dekoratív — a CoinJoin működésének diagramja.
 5. Bambu Studio gyártólemez összerakva kötegelt nyomtatáshoz
 6. 100 db legyártva a Bitcoin Prague 2026 rendezvényre
 
-<div style="margin: 2rem 0; aspect-ratio: 16/9; border-radius: 0.75rem; overflow: hidden;">
-  <iframe
-    width="100%"
-    height="100%"
-    src="https://www.youtube.com/embed/rAYKTOPJRng"
-    title="GingerWallet CoinJoin Mágnes"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-  ></iframe>
+<div class="privacy-video" data-privacy-video data-video-id="rAYKTOPJRng" data-video-title="GingerWallet CoinJoin Mágnes">
+  <div class="privacy-video__placeholder">
+    <span class="privacy-video__icon" aria-hidden="true">▶</span>
+    <strong class="privacy-video__title">GingerWallet CoinJoin Mágnes</strong>
+    <p class="privacy-video__notice">A YouTube-lejátszó csak a betöltés kiválasztása után létesít kapcsolatot a Google-lel.</p>
+    <button class="privacy-video__button" type="button" data-privacy-video-load>Videó betöltése a YouTube-ról</button>
+  </div>
 </div>
 
 ![CoinJoin mágnes egységnézet](/images/projects/coinjoin-magnet-preview.png)

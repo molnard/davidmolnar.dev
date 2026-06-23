@@ -15,6 +15,13 @@ const lang: Lang = getLangFromUrl(Astro.url);
 const altLang: Lang = lang === 'en' ? 'hu' : 'en';
 const altHref = altHrefProp ?? (altLang === 'en' ? '/' : '/hu/');
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const currentPath = Astro.url.pathname;
+const enPath = lang === 'hu'
+  ? currentPath.replace(/^\/hu(?=\/|$)/, '') || '/'
+  : currentPath;
+const huPath = lang === 'hu'
+  ? currentPath
+  : currentPath === '/' ? '/hu/' : `/hu${currentPath}`;
 const ogImage = new URL('/og.png', Astro.site).toString();
 
 const cfAnalyticsToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
@@ -30,9 +37,9 @@ const isProd = import.meta.env.PROD;
     <meta name="generator" content={Astro.generator} />
 
     <link rel="canonical" href={canonicalURL} />
-    <link rel="alternate" hreflang="en" href={new URL('/', Astro.site).toString()} />
-    <link rel="alternate" hreflang="hu" href={new URL('/hu/', Astro.site).toString()} />
-    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site).toString()} />
+    <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site).toString()} />
+    <link rel="alternate" hreflang="hu" href={new URL(huPath, Astro.site).toString()} />
+    <link rel="alternate" hreflang="x-default" href={new URL(enPath, Astro.site).toString()} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -79,6 +86,35 @@ const isProd = import.meta.env.PROD;
       document.addEventListener('click', function (e) {
         var el = e.target.closest('[data-lang-switch]');
         if (el) localStorage.setItem('lang', el.dataset.langSwitch);
+      });
+    </script>
+
+    <!-- YouTube is loaded only after an explicit visitor action. -->
+    <script is:inline>
+      document.addEventListener('click', function (e) {
+        var button = e.target.closest('[data-privacy-video-load]');
+        if (!button) return;
+
+        var container = button.closest('[data-privacy-video]');
+        if (!container) return;
+
+        var videoId = container.dataset.videoId || '';
+        if (!/^[A-Za-z0-9_-]{11}$/.test(videoId)) return;
+
+        var start = Number.parseInt(container.dataset.videoStart || '', 10);
+        var params = new URLSearchParams({ autoplay: '1', rel: '0' });
+        if (Number.isFinite(start) && start > 0) params.set('start', String(start));
+
+        var iframe = document.createElement('iframe');
+        iframe.className = 'privacy-video__iframe';
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?' + params.toString();
+        iframe.title = container.dataset.videoTitle || 'YouTube video';
+        iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.loading = 'lazy';
+        iframe.referrerPolicy = 'no-referrer';
+
+        container.replaceChildren(iframe);
       });
     </script>
 

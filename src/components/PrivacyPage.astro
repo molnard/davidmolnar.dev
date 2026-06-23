@@ -1,0 +1,217 @@
+---
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const updated = '2026-06-23';
+---
+
+<section class="bg-paper">
+  <div class="mx-auto max-w-4xl px-6 py-16 md:px-8 md:py-24">
+    {lang === 'hu' ? (
+      <>
+        <p class="font-mono text-[11px] uppercase tracking-widest text-amber-dark">Jogi információ</p>
+        <h1 class="mt-3 font-display text-4xl font-semibold tracking-tight text-ink md:text-5xl">
+          Adatkezelési tájékoztató
+        </h1>
+        <p class="mt-5 text-muted">Utolsó frissítés: {updated}</p>
+
+        <div class="md-content mt-12">
+          <h2>1. Adatkezelő</h2>
+          <p>
+            Molnár Dávid egyéni vállalkozó, Magyarország. Kapcsolat:
+            {' '}<a href="mailto:hello@davidmolnar.dev">hello@davidmolnar.dev</a>.
+          </p>
+
+          <h2>2. A weboldal működése és tárhelye</h2>
+          <p>
+            A weboldal statikus tartalmát a Cloudflare Pages szolgálja ki. A Cloudflare a
+            szolgáltatás működtetéséhez, biztonságához és kézbesítéséhez szükséges technikai
+            adatokat — például IP-címet, kért URL-t, időpontot és böngészőadatokat — kezelhet.
+            Ennek jogalapja a weboldal biztonságos és megbízható működéséhez fűződő jogos érdek.
+          </p>
+
+          <h2>3. Cloudflare Web Analytics</h2>
+          <p>
+            A weboldal Cloudflare Web Analytics szolgáltatást használ a teljesítmény és az
+            összesített használat mérésére. A szolgáltatás nem használ cookie-t, localStorage-ot
+            vagy más kliensoldali azonosítót, és nem készít felhasználói profilt. A mérés
+            jogalapja a weboldal teljesítményének és használhatóságának javításához fűződő jogos
+            érdek.
+          </p>
+
+          <h2>4. Nyelvi beállítás</h2>
+          <p>
+            A kézzel kiválasztott nyelvet a böngésző <code>localStorage</code> tárhelyén a
+            <code>lang</code> kulcs tárolja. Ez kizárólag a kért nyelv megjegyzésére szolgál,
+            nem követési célú, és a böngészőadatok törléséig marad meg.
+          </p>
+
+          <h2>5. YouTube-videók</h2>
+          <p>
+            A YouTube-lejátszók alapállapotban nem töltődnek be. A Google/YouTube csak akkor kap
+            hálózati kapcsolatot és technikai adatokat, ha a látogató külön megnyomja a videó
+            betöltésére szolgáló gombot. Ekkor a YouTube hivatalos, fokozott adatvédelmi módú
+            <code>youtube-nocookie.com</code> lejátszója töltődik be. A betöltés jogalapja a
+            látogató egyértelmű hozzájárulása; a lejátszó ismételt betöltése az oldal frissítésével
+            megszüntethető.
+          </p>
+
+          <h2>6. Külső szolgáltatások és linkek</h2>
+          <p>
+            A Calendly időpontfoglalás, a Bitcoin directory kereskedői térkép és más külső oldalak csak
+            linkre kattintás után nyílnak meg. Ezek a szolgáltatók saját adatkezelési feltételeik
+            szerint járnak el. A Bitcoin directoryen a Bitcoin-elfogadás ellenőrizhetősége érdekében pontos,
+            nyilvános üzleti hely szerepel; a saját weboldal csak a települést tünteti fel.
+          </p>
+
+          <h2>7. Emailes kapcsolatfelvétel</h2>
+          <p>
+            Email küldésekor az email-cím, név, az üzenet tartalma és az önként megadott további
+            adatok kerülnek kezelésre. A cél a megkeresés megválaszolása, együttműködés
+            előkészítése és az üzleti kommunikáció. A jogalap szerződéskötést megelőző lépések
+            megtétele, illetve jogos érdek. A levelezés az utolsó érdemi kommunikációtól számított
+            legfeljebb két évig marad meg, kivéve, ha szerződéses, számviteli vagy jogi igény miatt
+            hosszabb megőrzés szükséges. Az email kézbesítésében a Cloudflare Email Routing és a
+            beállított postafiók-szolgáltató működik közre.
+          </p>
+
+          <h2>8. Címzettek és adattovábbítás</h2>
+          <p>
+            Technikai szolgáltatóként a Cloudflare, a látogató külön művelete után pedig a
+            Google/YouTube, a Calendly vagy a Bitcoin directory kezelhet adatokat. Egyes szolgáltatók az
+            Európai Gazdasági Térségen kívül is végezhetnek adatkezelést, saját adatvédelmi
+            tájékoztatóikban ismertetett garanciák mellett. Személyes adat értékesítése nem
+            történik.
+          </p>
+
+          <h2>9. Érintetti jogok</h2>
+          <p>
+            Kérhető hozzáférés, helyesbítés, törlés, az adatkezelés korlátozása, tiltakozás és —
+            ahol alkalmazható — adathordozhatóság vagy a hozzájárulás visszavonása. Kérelem a
+            fenti email-címen nyújtható be. Panasz tehető a
+            {' '}<a href="https://www.naih.hu/" target="_blank" rel="noopener noreferrer">
+              Nemzeti Adatvédelmi és Információszabadság Hatóságnál
+            </a>.
+          </p>
+
+          <h2>10. Automatizált döntések</h2>
+          <p>
+            A weboldal nem végez profilalkotást vagy joghatással járó automatizált
+            döntéshozatalt.
+          </p>
+
+          <h2>Szolgáltatói tájékoztatók</h2>
+          <ul>
+            <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare adatvédelmi tájékoztató</a></li>
+            <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google adatvédelmi tájékoztató</a></li>
+            <li><a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Calendly adatvédelmi tájékoztató</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Bitcoin directory adatvédelmi tájékoztató</a></li>
+          </ul>
+        </div>
+      </>
+    ) : (
+      <>
+        <p class="font-mono text-[11px] uppercase tracking-widest text-amber-dark">Legal information</p>
+        <h1 class="mt-3 font-display text-4xl font-semibold tracking-tight text-ink md:text-5xl">
+          Privacy notice
+        </h1>
+        <p class="mt-5 text-muted">Last updated: {updated}</p>
+
+        <div class="md-content mt-12">
+          <h2>1. Data controller</h2>
+          <p>
+            David Molnar, sole trader, Hungary. Contact:
+            {' '}<a href="mailto:hello@davidmolnar.dev">hello@davidmolnar.dev</a>.
+          </p>
+
+          <h2>2. Website operation and hosting</h2>
+          <p>
+            This static website is delivered through Cloudflare Pages. Cloudflare may process
+            technical data required to operate, secure, and deliver the service, such as IP
+            address, requested URL, time, and browser information. The legal basis is the
+            legitimate interest in operating a secure and reliable website.
+          </p>
+
+          <h2>3. Cloudflare Web Analytics</h2>
+          <p>
+            The website uses Cloudflare Web Analytics to measure performance and aggregate
+            usage. It does not use cookies, localStorage, or another client-side identifier, and
+            it does not create user profiles. The legal basis is the legitimate interest in
+            improving website performance and usability.
+          </p>
+
+          <h2>4. Language preference</h2>
+          <p>
+            A manually selected language is stored under the <code>lang</code> key in browser
+            <code>localStorage</code>. It is used only to remember the requested language, not
+            for tracking, and remains until browser data is deleted.
+          </p>
+
+          <h2>5. YouTube videos</h2>
+          <p>
+            YouTube players are not loaded by default. Google/YouTube receives a network
+            connection and technical data only after the visitor explicitly presses the video
+            loading button. The official privacy-enhanced <code>youtube-nocookie.com</code>
+            player is then loaded. The legal basis is the visitor's explicit consent; reloading
+            the page removes the loaded player.
+          </p>
+
+          <h2>6. External services and links</h2>
+          <p>
+            Calendly scheduling, the Bitcoin directory merchant map, and other external websites open only
+            after a link is selected. These providers act under their own privacy terms. Bitcoin directory
+            displays an exact, public business location so Bitcoin acceptance can be verified;
+            this website itself displays only .
+          </p>
+
+          <h2>7. Contact by email</h2>
+          <p>
+            When an email is sent, the email address, name, message, and any other voluntarily
+            supplied information are processed to answer the enquiry, prepare a potential
+            engagement, and maintain business communication. The legal basis is taking steps
+            before entering a contract or legitimate interest. Messages are retained for no
+            longer than two years after the last substantive communication, unless a longer
+            period is required for a contract, accounting obligation, or legal claim. Cloudflare
+            Email Routing and the configured mailbox provider assist with delivery.
+          </p>
+
+          <h2>8. Recipients and international transfers</h2>
+          <p>
+            Cloudflare acts as a technical service provider. After a separate visitor action,
+            Google/YouTube, Calendly, or Bitcoin directory may also process data. Some providers may
+            process data outside the European Economic Area under the safeguards described in
+            their privacy notices. Personal data is not sold.
+          </p>
+
+          <h2>9. Your rights</h2>
+          <p>
+            You may request access, correction, deletion, restriction, objection, and — where
+            applicable — portability or withdrawal of consent. Requests can be sent to the email
+            address above. You may also lodge a complaint with the
+            {' '}<a href="https://www.naih.hu/" target="_blank" rel="noopener noreferrer">
+              Hungarian National Authority for Data Protection and Freedom of Information
+            </a>.
+          </p>
+
+          <h2>10. Automated decisions</h2>
+          <p>
+            The website does not perform profiling or automated decision-making with legal or
+            similarly significant effects.
+          </p>
+
+          <h2>Provider notices</h2>
+          <ul>
+            <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a></li>
+            <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
+            <li><a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Calendly Privacy Notice</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Bitcoin directory Privacy Policy</a></li>
+          </ul>
+        </div>
+      </>
+    )}
+  </div>
+</section>

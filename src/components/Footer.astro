@@ -6,6 +6,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const year = new Date().getFullYear();
 const bitcoinAcceptedHref = lang === 'hu' ? '/hu/bitcoin-accepted/' : '/bitcoin-accepted/';
+const privacyHref = lang === 'hu' ? '/hu/privacy/' : '/privacy/';
 ---
 
 <footer class="bg-paper border-t border-ink/10">
@@ -32,18 +33,26 @@ const bitcoinAcceptedHref = lang === 'hu' ? '/hu/bitcoin-accepted/' : '/bitcoin-
       />
     </a>
 
-    <!-- Right: source -->
-    <span>
-      {t('footer.built')}{' '}
+    <!-- Right: privacy + source -->
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
       <a
-        href="https://github.com/molnard/davidmolnar.dev"
-        target="_blank"
-        rel="noopener noreferrer"
+        href={privacyHref}
         class="text-forest hover:text-amber-dark underline-offset-2 hover:underline"
       >
-        GitHub
+        {t('footer.privacy')}
       </a>
-    </span>
+      <span>
+        {t('footer.built')}{' '}
+        <a
+          href="https://github.com/molnard/davidmolnar.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-forest hover:text-amber-dark underline-offset-2 hover:underline"
+        >
+          GitHub
+        </a>
+      </span>
+    </div>
 
   </div>
 </footer>

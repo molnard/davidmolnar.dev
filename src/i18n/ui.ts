@@ -111,6 +111,7 @@ export const ui = {
     'footer.legal': 'Sole trader · Hungary',
     'footer.bitcoin': 'Bitcoin accepted',
     'footer.built': 'Built with care. Source on',
+    'footer.privacy': 'Privacy',
 
     'comp.page.projects': 'Projects',
     'comp.page.back': '← Back',
@@ -227,9 +228,10 @@ export const ui = {
     'contact.pgp.label': 'PGP',
     'contact.pgp.viewkey': 'Publikus kulcs megtekintése',
 
-    'footer.legal': 'Egyéni vállalkozó · Magyarország',
+    'footer.legal': 'Egyéni vállalkozó · ',
     'footer.bitcoin': 'Bitcoin elfogadva',
     'footer.built': 'Készítve gonddal. Forrás:',
+    'footer.privacy': 'Adatkezelés',
 
     'comp.page.projects': 'Projektek',
     'comp.page.back': '← Vissza',

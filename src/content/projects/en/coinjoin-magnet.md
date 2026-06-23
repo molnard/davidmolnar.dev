@@ -43,16 +43,13 @@ The layout is not decorative — it's a diagram of how CoinJoin works.
 5. Bambu Studio production plate laid out for batch printing
 6. 100 units manufactured for Bitcoin Prague 2026
 
-<div style="margin: 2rem 0; aspect-ratio: 16/9; border-radius: 0.75rem; overflow: hidden;">
-  <iframe
-    width="100%"
-    height="100%"
-    src="https://www.youtube.com/embed/rAYKTOPJRng"
-    title="GingerWallet CoinJoin Magnet"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-  ></iframe>
+<div class="privacy-video" data-privacy-video data-video-id="rAYKTOPJRng" data-video-title="GingerWallet CoinJoin Magnet">
+  <div class="privacy-video__placeholder">
+    <span class="privacy-video__icon" aria-hidden="true">▶</span>
+    <strong class="privacy-video__title">GingerWallet CoinJoin Magnet</strong>
+    <p class="privacy-video__notice">The YouTube player connects to Google only after you choose to load it.</p>
+    <button class="privacy-video__button" type="button" data-privacy-video-load>Load video from YouTube</button>
+  </div>
 </div>
 
 ![CoinJoin magnet single-unit preview](/images/projects/coinjoin-magnet-preview.png)

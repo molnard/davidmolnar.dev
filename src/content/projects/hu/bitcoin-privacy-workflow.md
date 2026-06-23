@@ -41,16 +41,13 @@ A cél nem a tökéletes anonimitás ígérete. A cél egy szándékos workflow:
 
 A témából magyar nyelvű podcast beszélgetés is készült. Ez a formátum azoknak hasznos, akik a cikk szerkezetét inkább beszélgetésként, példákkal és magyarázatokkal követnék végig.
 
-<div style="margin: 2rem 0; aspect-ratio: 16/9; border-radius: 0.75rem; overflow: hidden;">
-  <iframe
-    width="100%"
-    height="100%"
-    src="https://www.youtube.com/embed/VixSrVrXdjk?start=2910"
-    title="Bitcoin privacy workflow podcast"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-  ></iframe>
+<div class="privacy-video" data-privacy-video data-video-id="VixSrVrXdjk" data-video-start="2910" data-video-title="Bitcoin privacy workflow podcast">
+  <div class="privacy-video__placeholder">
+    <span class="privacy-video__icon" aria-hidden="true">▶</span>
+    <strong class="privacy-video__title">Bitcoin privacy workflow podcast</strong>
+    <p class="privacy-video__notice">A YouTube-lejátszó csak a betöltés kiválasztása után létesít kapcsolatot a Google-lel.</p>
+    <button class="privacy-video__button" type="button" data-privacy-video-load>Videó betöltése a YouTube-ról</button>
+  </div>
 </div>
 
 ## Kontextus

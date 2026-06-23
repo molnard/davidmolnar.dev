@@ -20,7 +20,7 @@ links:
 
 ## Mi ez
 
-Egyedileg testreszabott, 3D nyomtatott NFC névjegykártya gyors kapcsolatcseréhez. A kártya érintésre a [davidmolnar.dev/addcontact](https://davidmolnar.dev/addcontact) mobilos névjegyoldalt nyitja meg, ahol egyértelmű névjegy hozzáadása/mentése művelet várja a látogatót.
+Egyedileg testreszabott, 3D nyomtatott NFC névjegykártya gyors kapcsolatcseréhez. A kártya érintésre egy privát mobilos névjegyoldalt nyit meg, ahol egyértelmű névjegy hozzáadása/mentése művelet várja a látogatót.
 
 ## Mi készült
 

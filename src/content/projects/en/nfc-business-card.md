@@ -20,7 +20,7 @@ links:
 
 ## What it is
 
-A customized 3D printed NFC business card for quickly sharing contact details. Tapping the card opens the mobile contact page at [davidmolnar.dev/addcontact](https://davidmolnar.dev/addcontact), where the visitor gets a clear add/save contact action.
+A customized 3D printed NFC business card for quickly sharing contact details. Tapping the card opens a private mobile contact page, where the visitor gets a clear add/save contact action.
 
 ## What is built
 
