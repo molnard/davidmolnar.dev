@@ -16,7 +16,7 @@ export const ui = {
       'I am a senior software engineer with 15+ years of hands-on work behind me, including 8 years in Bitcoin privacy. I spent six years at Wasabi Wallet, eventually as CTO; today I work independently on software, hardware, and Bitcoin projects that are worth building properly.',
     'hero.cta.work': 'Then see what I do',
     'hero.cta.contact': 'Start a conversation',
-    'hero.photo.alt': 'David Molnar in Prague by the river at sunset',
+    'hero.photo.alt': 'David Molnar smiling in a bright modern interior',
 
     'comp.title': 'What I do',
 
@@ -137,7 +137,7 @@ export const ui = {
       'Senior szoftverfejlesztő vagyok 15+ év gyakorlati tapasztalattal, ebből 8 év Bitcoin privacy fejlesztéssel. Hat évet töltöttem a Wasabi Walletnél, végül CTO-ként; ma független vállalkozóként dolgozom szoftveres, hardveres és Bitcoin projekteken, ahol fontos a megbízható, átgondolt megvalósítás.',
     'hero.cta.work': 'Amivel foglalkozom',
     'hero.cta.contact': 'Kapcsolat',
-    'hero.photo.alt': 'David Molnar Prágában a folyóparton naplementekor',
+    'hero.photo.alt': 'David Molnar mosolyog egy világos, modern belső térben',
 
     'comp.title': 'Amivel foglalkozom',
 
