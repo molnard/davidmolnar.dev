@@ -7,9 +7,9 @@ interface Props {
 
 const { lang } = Astro.props;
 
+const BITCOIN_ADDRESS = 'bc1q7k9lxd4uyngvazckvtgxrp9mx6g704q0le0nyx';
 const SILENT_PAYMENT_ADDRESS =
   'sp1qq03fz2reeuumvr3sc3mf6rehdtdrx43xgflagndr6uzhycajst4ccq6cc2x6zh6tqa24jj8te64ytdt7u8cq5cgnmkm3ldldnevmp4ntkua0aqxj';
-const BTC_MAP_URL = '#';
 const LIGHTNING_USERNAME = 'molnard@cake.cash';
 
 const copyLabel = lang === 'hu' ? 'Másolás' : 'Copy';
@@ -21,54 +21,58 @@ const text = lang === 'hu'
       eyebrow: 'Bitcoin elfogadva',
       title: 'Bitcoin fizetési lehetőségek',
       intro:
-        'Bitcoinos fizetéshez Silent Payments címet, Bitcoin directory bejegyzést és Lightning elérhetőséget találsz itt.',
+        'Bitcoinos fizetéshez hagyományos on-chain címet, Silent Payments címet és Lightning elérhetőséget találsz itt.',
+      bitcoinTitle: 'Bitcoin',
+      bitcoinBody:
+        'Hagyományos on-chain Bitcoin-fizetéshez használd az alábbi címet vagy olvasd be a QR-kódot.',
+      bitcoinNoticeTitle: 'Fontos',
+      bitcoinNotice:
+        'Csak Bitcoin mainnet hálózaton küldj erre a címre. A címet küldés előtt mindig ellenőrizd.',
       silentTitle: 'Silent Payments',
       silentBody:
-        'A Silent Payments egy on-chain Bitcoin fizetési mód, amelynél nem kell minden fizetéshez új címet kérned tőlem. Használd a címet vagy olvasd be a QR-kódot egy kompatibilis walletből.',
+        'A Silent Payments egy on-chain Bitcoin fizetési mód, amelynél nem kell minden fizetéshez új címet kérned tőlem. Használd a címet egy kompatibilis walletből.',
       walletTipTitle: 'Wallet tipp',
       walletTip:
         'Mobilon kiindulásnak a Cake Walletet, desktopon a Wasabi Walletet javaslom Silent Payments fizetéshez. Ez csak praktikus tipp: bármilyen kompatibilis wallet szoftver megfelelő.',
-      Bitcoin directoryTitle: 'Bitcoin directory',
-      Bitcoin directoryBody:
-        'A vállalkozás Bitcoin directory bejegyzése publikus, így térképen is ellenőrizhető, hogy Bitcoin elfogadás elérhető.',
-      Bitcoin directoryCta: 'Megnyitás Bitcoin directoryen',
       lightningTitle: 'Lightning',
       lightningBody:
         LIGHTNING_USERNAME
           ? 'Gyors, kis összegű fizetésekhez Lightningon is elérhető vagyok.'
           : 'A Lightning felhasználónevet külön szekcióban tartom, amint a publikus név véglegesítve van.',
       back: 'Vissza a főoldalra',
-      qrAlt: 'Silent Payments cím QR-kódja',
-      qrTitle: 'Silent Payments QR',
-      qrHint: 'Olvasd be kompatibilis Bitcoin walletből.',
-      addressLabel: 'Silent Payment address',
+      qrAlt: 'Bitcoin fogadási cím QR-kódja',
+      qrTitle: 'Bitcoin QR',
+      qrHint: 'Olvasd be egy Bitcoin walletből.',
+      addressLabel: 'Bitcoin fogadási cím',
       usernameLabel: 'Lightning username',
     }
   : {
       eyebrow: 'Bitcoin accepted',
       title: 'Bitcoin payment options',
       intro:
-        'For Bitcoin payments, you can find my Silent Payments address, Bitcoin directory listing, and Lightning contact here.',
+        'For Bitcoin payments, you can find my standard on-chain address, Silent Payments address, and Lightning contact here.',
+      bitcoinTitle: 'Bitcoin',
+      bitcoinBody:
+        'For a standard on-chain Bitcoin payment, use the address below or scan the QR code.',
+      bitcoinNoticeTitle: 'Important',
+      bitcoinNotice:
+        'Send only on the Bitcoin mainnet network. Always verify the address before sending.',
       silentTitle: 'Silent Payments',
       silentBody:
-        'Silent Payments is an on-chain Bitcoin payment method where you do not need to ask me for a fresh address for every payment. Use the address or scan the QR code from a compatible wallet.',
+        'Silent Payments is an on-chain Bitcoin payment method where you do not need to ask me for a fresh address for every payment. Use the address from a compatible wallet.',
       walletTipTitle: 'Wallet tip',
       walletTip:
         'For Silent Payments, my practical suggestion is Cake Wallet on mobile and Wasabi Wallet on desktop. This is only a tip: any compatible wallet software is fine.',
-      Bitcoin directoryTitle: 'Bitcoin directory',
-      Bitcoin directoryBody:
-        'The business is listed on Bitcoin directory, so Bitcoin acceptance can also be checked on the public map.',
-      Bitcoin directoryCta: 'Open on Bitcoin directory',
       lightningTitle: 'Lightning',
       lightningBody:
         LIGHTNING_USERNAME
           ? 'For fast, small payments, I am also reachable on Lightning.'
           : 'I keep Lightning in its own section and will add the public username once it is finalized.',
       back: 'Back to homepage',
-      qrAlt: 'QR code for Silent Payments address',
-      qrTitle: 'Silent Payments QR',
-      qrHint: 'Scan from a compatible Bitcoin wallet.',
-      addressLabel: 'Silent Payment address',
+      qrAlt: 'QR code for the Bitcoin receiving address',
+      qrTitle: 'Bitcoin QR',
+      qrHint: 'Scan from a Bitcoin wallet.',
+      addressLabel: 'Bitcoin receiving address',
       usernameLabel: 'Lightning username',
     };
 ---
@@ -94,34 +98,33 @@ const text = lang === 'hu'
     <div class="mt-14 grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] items-start">
       <div class="rounded-lg border border-ink/10 bg-cream/45 p-6 md:p-8">
         <div class="mb-3 flex items-center gap-3">
-          <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#2FBC74] text-paper shadow-sm" aria-hidden="true">
+          <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F7931A] text-paper shadow-sm" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" role="img" focusable="false">
-              <path d="M12 4.2c-3.5 0-6.5 2-8 5 1.5 3 4.5 5 8 5s6.5-2 8-5c-1.5-3-4.5-5-8-5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M8.9 9.2a3.1 3.1 0 0 0 6.2 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
-              <path d="M12 12.6v6.2m0 0-2.5-2.5m2.5 2.5 2.5-2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="12" cy="12" r="10" fill="currentColor"></circle>
+              <text x="8.1" y="16.6" fill="#F8F5F0" font-family="Arial, sans-serif" font-size="12" font-weight="700">B</text>
             </svg>
           </span>
           <p class="font-mono text-[11px] uppercase tracking-widest text-amber-dark">
-            {text.silentTitle}
+            {text.bitcoinTitle}
           </p>
         </div>
         <h2 class="font-display font-semibold text-2xl md:text-3xl tracking-tight text-ink">
           {text.addressLabel}
         </h2>
         <p class="mt-4 text-muted leading-relaxed">
-          {text.silentBody}
+          {text.bitcoinBody}
         </p>
 
         <div class="mt-6 overflow-hidden rounded-lg border border-ink/10 bg-paper">
           <div class="p-4 md:p-5">
             <p class="font-mono text-sm md:text-base leading-relaxed text-ink break-all">
-              {SILENT_PAYMENT_ADDRESS}
+              {BITCOIN_ADDRESS}
             </p>
           </div>
           <button
             type="button"
             class="copy-btn w-full border-t border-ink/10 bg-[#0F1A14] px-5 py-3 text-sm font-semibold text-paper hover:opacity-90 transition-opacity"
-            data-copy={SILENT_PAYMENT_ADDRESS}
+            data-copy={BITCOIN_ADDRESS}
             aria-label={copyLabel}
           >
             {copyLabel}
@@ -129,8 +132,8 @@ const text = lang === 'hu'
         </div>
 
         <div class="mt-6 border-l-2 border-amber pl-5">
-          <p class="font-semibold text-ink">{text.walletTipTitle}</p>
-          <p class="mt-1 text-sm leading-relaxed text-muted">{text.walletTip}</p>
+          <p class="font-semibold text-ink">{text.bitcoinNoticeTitle}</p>
+          <p class="mt-1 text-sm leading-relaxed text-muted">{text.bitcoinNotice}</p>
         </div>
       </div>
 
@@ -153,7 +156,7 @@ const text = lang === 'hu'
         </div>
         <div class="rounded-lg border border-ink/10 bg-white p-3">
           <img
-            src="/images/silent-payment-qr.png"
+            src="/images/bitcoin-address-qr.png"
             alt={text.qrAlt}
             width="1024"
             height="1024"
@@ -167,26 +170,33 @@ const text = lang === 'hu'
     <div class="mt-8 grid gap-6 md:grid-cols-2">
       <section class="rounded-lg border border-ink/10 bg-paper p-6 md:p-7">
         <div class="mb-3 flex items-center gap-3">
-          <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F7931A] text-paper shadow-sm" aria-hidden="true">
+          <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#2FBC74] text-paper shadow-sm" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" role="img" focusable="false">
-              <path d="M12 2.7c-3.3 0-6 2.7-6 6 0 4.5 6 12.6 6 12.6s6-8.1 6-12.6c0-3.3-2.7-6-6-6Z" fill="currentColor"></path>
-              <circle cx="12" cy="8.7" r="3.1" fill="#F8F5F0"></circle>
-              <text x="8.8" y="12" fill="#F7931A" font-family="Arial, sans-serif" font-size="8.2" font-weight="700">B</text>
+              <path d="M12 4.2c-3.5 0-6.5 2-8 5 1.5 3 4.5 5 8 5s6.5-2 8-5c-1.5-3-4.5-5-8-5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M8.9 9.2a3.1 3.1 0 0 0 6.2 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+              <path d="M12 12.6v6.2m0 0-2.5-2.5m2.5 2.5 2.5-2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
           </span>
           <p class="font-mono text-[11px] uppercase tracking-widest text-amber-dark">
-            {text.Bitcoin directoryTitle}
+            {text.silentTitle}
           </p>
         </div>
-        <p class="text-muted leading-relaxed">{text.Bitcoin directoryBody}</p>
-        <a
-          href={BTC_MAP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-5 inline-flex items-center rounded-full bg-[#0F1A14] px-5 py-2.5 text-sm font-semibold text-paper hover:opacity-90 transition-opacity"
-        >
-          {text.Bitcoin directoryCta}
-        </a>
+        <p class="text-muted leading-relaxed">{text.silentBody}</p>
+        <div class="mt-5 overflow-hidden rounded-lg border border-ink/10 bg-cream/45">
+          <p class="px-4 py-3 font-mono text-sm text-ink break-all">{SILENT_PAYMENT_ADDRESS}</p>
+          <button
+            type="button"
+            class="copy-btn w-full border-t border-ink/10 px-4 py-2.5 text-sm font-semibold text-forest hover:bg-amber/15 transition-colors"
+            data-copy={SILENT_PAYMENT_ADDRESS}
+            aria-label={copyLabel}
+          >
+            {copyLabel}
+          </button>
+        </div>
+        <div class="mt-5 border-l-2 border-amber pl-4">
+          <p class="font-semibold text-ink">{text.walletTipTitle}</p>
+          <p class="mt-1 text-sm leading-relaxed text-muted">{text.walletTip}</p>
+        </div>
       </section>
 
       <section class="rounded-lg border border-ink/10 bg-paper p-6 md:p-7">

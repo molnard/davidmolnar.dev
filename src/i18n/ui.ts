@@ -91,7 +91,7 @@ export const ui = {
 
     'about.title': 'About',
     'about.body':
-      'I’m David Molnar, a senior software engineer based in . 15+ years building software — distributed systems, embedded hardware, and (since 2018) Bitcoin privacy tools. I spent six years at Wasabi Wallet, eventually as CTO, building one of the most widely used Bitcoin privacy wallets — 4,600+ commits across the protocol and client. Today I work as an independent contractor on several parallel projects, including Ginger Wallet, Fetaphon, TESCO, and AGIS. I take on hard problems: protocol-level Bitcoin privacy, battery-powered embedded devices that have to run for years, and industrial parts with real tolerances.',
+      'I’m David Molnar, a senior software engineer with 15+ years of experience building software — distributed systems, embedded hardware, and (since 2018) Bitcoin privacy tools. I spent six years at Wasabi Wallet, eventually as CTO, building one of the most widely used Bitcoin privacy wallets — 4,600+ commits across the protocol and client. Today I work as an independent contractor on several parallel projects, including Ginger Wallet, Fetaphon, TESCO, and AGIS. I take on hard problems: protocol-level Bitcoin privacy, battery-powered embedded devices that have to run for years, and industrial parts with real tolerances.',
 
     'elsewhere.title': 'Elsewhere',
 
@@ -211,7 +211,7 @@ export const ui = {
 
     'about.title': 'Rólam',
     'about.body':
-      'David Molnar vagyok, senior szoftverfejlesztő . 15+ éve építek szoftvert — elosztott rendszerek, embedded hardver, és 2018 óta Bitcoin privacy eszközök. Hat évet töltöttem a Wasabi Walletnél, végül CTO-ként — a világ egyik legszélesebb körben használt Bitcoin privacy wallete, 4600+ commit a protokollban és a kliensben. Ma független szoftverfejlesztőként, egyéni vállalkozóként dolgozom párhuzamosan több projekten — többek között a Ginger Walleten, a Fetaphonon, a TESCO-nál és az AGIS-nál. Szeretem a kihívásokat: protokollszintű Bitcoin privacy, akkumulátoros embedded rendszerek amik évekig üzem nélkül kell fussanak, és ipari alkatrészek valós tűréshatárokkal.',
+      'David Molnar vagyok, senior szoftverfejlesztő, több mint 15 év tapasztalattal. Elosztott rendszereket, embedded hardvert, és 2018 óta Bitcoin privacy eszközöket építek. Hat évet töltöttem a Wasabi Walletnél, végül CTO-ként — a világ egyik legszélesebb körben használt Bitcoin privacy wallete, 4600+ commit a protokollban és a kliensben. Ma független szoftverfejlesztőként, egyéni vállalkozóként dolgozom párhuzamosan több projekten — többek között a Ginger Walleten, a Fetaphonon, a TESCO-nál és az AGIS-nál. Szeretem a kihívásokat: protokollszintű Bitcoin privacy, akkumulátoros embedded rendszerek amik évekig üzem nélkül kell fussanak, és ipari alkatrészek valós tűréshatárokkal.',
 
     'elsewhere.title': 'Máshol',
 
@@ -228,7 +228,7 @@ export const ui = {
     'contact.pgp.label': 'PGP',
     'contact.pgp.viewkey': 'Publikus kulcs megtekintése',
 
-    'footer.legal': 'Egyéni vállalkozó · ',
+    'footer.legal': 'Egyéni vállalkozó · Magyarország',
     'footer.bitcoin': 'Bitcoin elfogadva',
     'footer.built': 'Készítve gonddal. Forrás:',
     'footer.privacy': 'Adatkezelés',
