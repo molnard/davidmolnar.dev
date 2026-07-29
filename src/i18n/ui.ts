@@ -18,6 +18,18 @@ export const ui = {
     'hero.cta.contact': 'Start a conversation',
     'hero.photo.alt': 'David Molnar smiling in a bright modern interior',
 
+    'proof.aria': 'Professional highlights',
+    'proof.experience.value': '15+ years',
+    'proof.experience.label': 'Software engineering',
+    'proof.experience.meta': 'From firmware to distributed systems',
+    'proof.wasabi.value': '4,663',
+    'proof.wasabi.label': 'Wasabi Wallet commits',
+    'proof.wasabi.meta': 'Protocol, client, and infrastructure',
+    'proof.github.value': '#10',
+    'proof.github.label': 'GitHub contributor in Hungary',
+    'proof.github.meta': 'Public contributions · rolling 12 months · 2020',
+    'proof.github.source': 'Source: committers.top',
+
     'comp.title': 'What I do',
 
     'comp.bitcoin.tag': '01 — Bitcoin',
@@ -138,6 +150,18 @@ export const ui = {
     'hero.cta.work': 'Amivel foglalkozom',
     'hero.cta.contact': 'Kapcsolat',
     'hero.photo.alt': 'David Molnar mosolyog egy világos, modern belső térben',
+
+    'proof.aria': 'Szakmai eredmények',
+    'proof.experience.value': '15+ év',
+    'proof.experience.label': 'Szoftverfejlesztés',
+    'proof.experience.meta': 'Firmware-től az elosztott rendszerekig',
+    'proof.wasabi.value': '4 663',
+    'proof.wasabi.label': 'Wasabi Wallet commit',
+    'proof.wasabi.meta': 'Protokoll, kliens és infrastruktúra',
+    'proof.github.value': '#10',
+    'proof.github.label': 'GitHub-hozzájáruló Magyarországon',
+    'proof.github.meta': 'Nyilvános hozzájárulások · gördülő 12 hónap · 2020',
+    'proof.github.source': 'Forrás: committers.top',
 
     'comp.title': 'Amivel foglalkozom',
 
