@@ -25,10 +25,11 @@ export const ui = {
     'proof.wasabi.value': '4,663',
     'proof.wasabi.label': 'Wasabi Wallet commits',
     'proof.wasabi.meta': 'Protocol, client, and infrastructure',
-    'proof.github.value': '#10',
-    'proof.github.label': 'GitHub contributor in Hungary',
-    'proof.github.meta': 'Public contributions · rolling 12 months · 2020',
-    'proof.github.source': 'Source: committers.top',
+    'proof.github.value': 'Top 30',
+    'proof.github.label': 'Worldwide GitHub activity level',
+    'proof.github.meta': '2,140 public contributions · rolling 12 months · 2020',
+    'proof.github.source.personal': 'Activity data',
+    'proof.github.source.benchmark': 'Global benchmark',
 
     'comp.title': 'What I do',
 
@@ -158,10 +159,11 @@ export const ui = {
     'proof.wasabi.value': '4 663',
     'proof.wasabi.label': 'Wasabi Wallet commit',
     'proof.wasabi.meta': 'Protokoll, kliens és infrastruktúra',
-    'proof.github.value': '#10',
-    'proof.github.label': 'GitHub-hozzájáruló Magyarországon',
-    'proof.github.meta': 'Nyilvános hozzájárulások · gördülő 12 hónap · 2020',
-    'proof.github.source': 'Forrás: committers.top',
+    'proof.github.value': 'Top 30',
+    'proof.github.label': 'Világszintű GitHub-aktivitási szint',
+    'proof.github.meta': '2 140 nyilvános hozzájárulás · gördülő 12 hónap · 2020',
+    'proof.github.source.personal': 'Saját adat',
+    'proof.github.source.benchmark': 'Globális mérce',
 
     'comp.title': 'Amivel foglalkozom',
 
