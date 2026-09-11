@@ -1,0 +1,135 @@
+:root { --paper: #f8f5f0; --ink: #1a1816; --forest: #1f3a2e; --amber: #f5b449; --muted: #565352; --rule: #ded8cf; }
+body { margin: 0; }
+.shell { width: calc(100% - 80px); max-width: 1240px; margin-inline: auto; }
+.contact-panel { padding: 28px 34px 18px; color: var(--paper); scroll-margin-top: 24px; }
+.contact-panel h2 { margin: 0 0 21px; font-size: 32px; line-height: 1.3; font-weight: 600; letter-spacing: -.7px; }
+.button { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 58px; padding: 12px 18px; border-radius: 999px; font-size: 18px; font-weight: 500; text-align: center; line-height: 1.45; text-decoration: none; cursor: pointer; transition: background-color .15s, color .15s; }
+.button-amber { background: var(--amber); color: #181a16; border: 1px solid #ffc16a; }
+.button-amber:hover { background: #ffc86e; }
+.button-outline { border: 2px solid #f8f5f0; color: var(--paper); }
+.button-outline:hover { background: #ffffff14; }
+.button-forest { background: var(--forest); color: var(--paper); }
+.button-forest:hover { background: #162a21; }
+summary { cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+.booking-link { margin-top: 16px; }
+.ui-icon { display: inline-flex; width: 24px; height: 24px; flex: 0 0 auto; }
+.ui-icon svg { display: block; width: 100%; height: 100%; stroke-width: 1.8; }
+.messengers { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 23px; padding-bottom: 20px; border-bottom: 1px solid #ffffff30; font-size: 15px; }
+.messengers a { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; }
+.messengers a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.messengers .qr-trigger { border-inline: 1px solid #ffffff50; padding-inline: 16px; line-height: 1.2; min-height: 22px; }
+.extra-contact > summary { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 48px; font-size: 16px; padding-top: 7px; }
+.extra-contact[open] > summary .ui-icon { transform: rotate(180deg); }
+.extra-contact-content { display: grid; gap: 24px; padding: 18px 0 12px; }
+.contact-identifier { min-width: 0; }
+.contact-identifier h3 { font-weight: 600; margin-bottom: 6px; }
+.contact-identifier p { font-family: ui-monospace, monospace; font-size: 14px; overflow-wrap: anywhere; line-height: 1.7; user-select: all; }
+.contact-identifier > a { display: inline-flex; align-items: center; min-height: 44px; margin-right: 15px; font-size: 14px; text-decoration: underline; }
+.email-content { border: 1px solid #ffffff40; border-radius: 15px; padding: 16px; margin-top: 12px; }
+.email-address { display: block; font-size: clamp(16px, 1.55vw, 21px); font-weight: 500; overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 4px; }
+.email-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 6px; font-size: 14px; }
+.email-actions > a { display: inline-flex; align-items: center; min-height: 44px; }
+.copy-button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 6px 3px; font-size: 14px; cursor: pointer; }
+.copy-button .ui-icon { width: 18px; height: 18px; }
+.copy-button:hover { text-decoration: underline; text-underline-offset: 4px; }
+.qr-dialog { width: min(440px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 28px; background: var(--paper); color: var(--ink); border-radius: 20px; border: 0; }
+.qr-dialog::backdrop { background: #12251de0; }
+.qr-dialog h2 { font-size: 24px; font-weight: 600; padding-right: 40px; }
+.qr-dialog p { margin-block: 12px; font-size: 14px; color: var(--muted); }
+.qr-artwork { position: relative; width: min(100%, 320px, calc(54dvh * 888 / 972)); aspect-ratio: 888 / 972; margin: 20px auto; overflow: hidden; border-radius: 14px; }
+/* Present the original Signal card at its measured bounds, without changing QR pixels. */
+.qr-artwork img { position: absolute; left: -21.6216%; top: -24.6914%; width: 143.2432%; max-width: none; height: auto; }
+.dialog-close { position: absolute; top: 14px; right: 14px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; }
+.dialog-close:hover { background: #e7e1d8; }
+:where(a, button, summary):focus-visible { outline: 3px solid #3d6ca8; outline-offset: 5px; }
+.contact-panel :where(a, button, summary):focus-visible { outline-color: #ffe09e; }
+.skip-link { position: fixed; top: 12px; left: 16px; z-index: 10; padding: 12px 20px; background: var(--forest); color: white; border-radius: 6px; transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
+.copy-status { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 12px 20px; max-width: calc(100% - 32px); width: max-content; background: #162a21; color: white; border: 1px solid #bdcbbf; border-radius: 12px; z-index: 20; font-size: 14px; opacity: 0; pointer-events: none; }
+.copy-status.is-visible { opacity: 1; }
+.clipboard-fallback { position: fixed; top: 0; left: -10000px; }
+.document-layout { max-width: 860px; padding-block: 64px; }
+.document-layout h1 { font-size: clamp(32px, 4vw, 48px); line-height: 1.2; font-weight: 600; letter-spacing: -1px; }
+.document-intro { max-width: 700px; margin-top: 24px; color: var(--muted); line-height: 1.8; }
+.payment-option { padding-block: 34px; border-bottom: 1px solid var(--rule); }
+.payment-option h2 { font-size: 25px; font-weight: 600; margin-bottom: 12px; color: var(--forest); }
+.payment-option > p { color: var(--muted); line-height: 1.7; }
+.payment-address { display: block; overflow-wrap: anywhere; font-family: ui-monospace, monospace; line-height: 1.8; padding: 18px 20px; border-radius: 12px; background: #f1ebe2; margin-top: 18px; user-select: all; }
+.payment-qr { margin-top: 12px; }
+.payment-qr summary { min-height: 44px; display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--forest); }
+.payment-qr img { max-width: min(260px, 100%); height: auto; padding: 12px; background: white; border-radius: 12px; margin-block: 16px; }
+.back-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 32px; color: var(--forest); text-decoration: underline; text-underline-offset: 4px; }
+
+@media (max-width: 1199px) {
+  .contact-panel { padding: 24px; }
+  .button { font-size: 15px; min-height: 52px; padding-inline: 12px; }
+  .messengers { gap: 8px; font-size: 13px; flex-wrap: wrap; justify-content: start; }
+  .messengers a { gap: 5px; }
+  .messengers .qr-trigger { padding-inline: 9px; }
+}
+@media (max-width: 899px) {
+  .shell { width: calc(100% - 48px); }
+  .contact-panel { padding: 22px; }
+  .contact-panel h2 { font-size: 28px; }
+  .button { font-size: 14px; gap: 8px; }
+  .messengers { gap: 4px 14px; margin-top: 16px; padding-bottom: 12px; }
+  .messengers .qr-trigger { border: 0; padding-inline: 0; min-height: 44px; }
+  .extra-contact > summary { font-size: 14px; }
+}
+@media (max-width: 599px) {
+  .shell { width: calc(100% - 40px); }
+  .contact-panel { order: 0; padding: 24px 22px 18px; }
+  .contact-panel h2 { font-size: 27px; margin-bottom: 18px; }
+  .button { min-height: 54px; font-size: 15px; }
+  .messengers { justify-content: space-between; gap: 8px; font-size: 13px; }
+  .messengers .ui-icon { width: 21px; height: 21px; }
+  .extra-contact > summary { font-size: 14px; }
+  .email-address { font-size: 17px; }
+  .document-layout { padding-block: 40px; }
+}
+
+.contact-standalone { max-width: 768px; margin-inline: auto; padding: 80px 32px; color: var(--ink); scroll-margin-top: 80px; }
+.contact-standalone h2 { font-size: clamp(30px, 4vw, 36px); margin-bottom: 32px; }
+.contact-standalone .button { font-size: 16px; max-width: 440px; min-height: 50px; }
+.contact-standalone .button-amber { background: var(--forest); border-color: var(--forest); color: var(--paper); }
+.contact-standalone .button-amber:hover { background: #152a20; }
+.contact-standalone .button-outline { color: var(--forest); border: 1px solid #7c8e7d; }
+.contact-standalone .email-content { border-color: var(--rule); background: #f1ebe2; max-width: 540px; }
+.contact-standalone .email-address { font-size: 18px; }
+.contact-standalone .messengers { justify-content: start; gap: 24px; border-color: var(--rule); padding-block: 12px; font-size: 15px; }
+.contact-standalone .qr-trigger { border-color: #a29d95; padding-inline: 20px; }
+.contact-standalone .extra-contact > summary { max-width: 440px; }
+.contact-standalone :where(a, button, summary):focus-visible { outline-color: #3d6ca8; }
+.skip-link { z-index: 100; }
+#competencies, #main { scroll-margin-top: 96px; }
+footer { color: #565352; }
+footer a { display: inline-flex; align-items: center; min-height: 44px; }
+@media (max-width: 599px) {
+  .contact-standalone { padding: 56px 24px; }
+  .contact-standalone .messengers { gap: 16px; font-size: 14px; }
+  .contact-standalone .qr-trigger { padding-inline: 0; border: 0; }
+}
+
+
+/* The address is the write action; copying stays beside it at every width. */
+.contact-standalone .email-content { padding: 0; max-width: 440px; border-radius: 12px; overflow: hidden; }
+.contact-standalone .email-actions { display: flex; flex-wrap: nowrap; align-items: stretch; gap: 0; margin: 0; }
+.contact-standalone .email-address { display: flex; align-items: center; flex: 1; min-width: 0; padding: 14px 16px; font-size: 16px; text-decoration: none; overflow-wrap: anywhere; }
+.contact-standalone .email-address:hover { text-decoration: underline; }
+.contact-standalone .email-actions .copy-button { flex-shrink: 0; padding: 12px 16px; border-left: 1px solid var(--rule); }
+.contact-standalone .email-actions .copy-button:hover { background: #e8e1d6; }
+.contact-standalone .email-actions :focus-visible { outline-offset: -4px; }
+.site-footer { border-top: 1px solid var(--rule); background: #f1ece4; }
+.footer-inner { max-width: 1152px; padding: 30px 32px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.footer-identity { display: flex; flex-direction: column; gap: 6px; }
+.footer-name { font-size: 14px; font-weight: 500; color: var(--ink); }
+.footer-legal { font-size: 12px; color: var(--muted); }
+.footer-links { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 28px; font-size: 13px; color: var(--forest); }
+.footer-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 699px) {
+  .footer-inner { align-items: start; flex-direction: column; gap: 14px; padding: 28px 24px; }
+  .footer-links { gap: 4px 20px; font-size: 12px; }
+  .contact-standalone .email-address { font-size: 14px; padding: 12px; }
+  .contact-standalone .email-actions .copy-button { padding: 12px 10px; font-size: 13px; gap: 5px; }
+}

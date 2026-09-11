@@ -1,73 +1,29 @@
 ---
-import { useTranslations, type Lang } from '../i18n/utils';
-
+import type { Lang } from '../i18n/utils';
+import { contact } from '../config/contact';
+import githubStats from '../config/github-stats.json';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
-const t = useTranslations(lang);
-
-const personalActivitySource =
-  'https://github.com/ashkulz/committers.top/blob/6bf669e3e9db0bcf665f55eab2815691c7963352/_data/locations/hungary.yml#L77-L83';
-const globalBenchmarkSource =
-  'https://github.com/ashkulz/committers.top/blob/6bf669e3e9db0bcf665f55eab2815691c7963352/_data/locations/worldwide.yml#L197-L212';
+const items = lang === 'hu' ? [
+  { value: '15+ év', label: 'Szoftverfejlesztési tapasztalat', detail: 'Firmware-től a kliens–szerver rendszerekig' },
+  { value: 'C# / .NET', label: 'Alkalmazások és háttérrendszerek', detail: 'Asztali és webes környezetben' },
+] : [
+  { value: '15+ years', label: 'Software engineering experience', detail: 'From firmware to client–server systems' },
+  { value: 'C# / .NET', label: 'Applications and backend systems', detail: 'Desktop and web environments' },
+];
 ---
-
-<section class="border-y border-ink/10 bg-cream" aria-label={t('proof.aria')}>
+<section class="border-y border-ink/10 bg-cream" aria-label={lang === 'hu' ? 'Szakmai háttér' : 'Professional background'}>
   <div class="mx-auto max-w-6xl px-6 md:px-8">
     <ul class="grid divide-y divide-ink/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-      <li class="py-7 sm:py-9 sm:pr-8">
-        <p class="font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-          {t('proof.experience.value')}
-        </p>
-        <p class="mt-2 text-sm font-medium text-ink">
-          {t('proof.experience.label')}
-        </p>
-        <p class="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted/70">
-          {t('proof.experience.meta')}
-        </p>
-      </li>
-
-      <li class="py-7 sm:px-8 sm:py-9">
-        <p class="font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-          {t('proof.wasabi.value')}
-        </p>
-        <p class="mt-2 text-sm font-medium text-ink">
-          {t('proof.wasabi.label')}
-        </p>
-        <p class="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted/70">
-          {t('proof.wasabi.meta')}
-        </p>
-      </li>
-
-      <li class="sm:pl-8">
-        <div class="-mx-3 flex h-full flex-col justify-center px-3 py-7 sm:mx-0 sm:-mr-3 sm:px-3 sm:py-9">
-          <span class="font-display text-3xl font-semibold tracking-tight text-forest md:text-4xl">
-            {t('proof.github.value')}
-          </span>
-          <span class="mt-2 text-sm font-medium text-ink">
-            {t('proof.github.label')}
-          </span>
-          <span class="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted/70">
-            {t('proof.github.meta')}
-          </span>
-          <span class="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted">
-            <a
-              href={personalActivitySource}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="underline decoration-ink/20 underline-offset-4 hover:text-forest"
-            >
-              {t('proof.github.source.personal')} ↗
-            </a>
-            <a
-              href={globalBenchmarkSource}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="underline decoration-ink/20 underline-offset-4 hover:text-forest"
-            >
-              {t('proof.github.source.benchmark')} ↗
-            </a>
-          </span>
-        </div>
+      {items.map(item => <li class="py-7 sm:px-8 sm:py-9 first:pl-0 last:pr-0">
+        <p class="font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">{item.value}</p>
+        <p class="mt-2 text-sm font-medium text-ink">{item.label}</p>
+        <p class="mt-2 text-sm text-muted">{item.detail}</p>
+      </li>)}
+      <li class="py-7 sm:pl-8 sm:py-9">
+        <p class="font-display text-3xl font-semibold tracking-tight text-forest md:text-4xl">Open-source</p>
+        <p class="mt-2 text-sm font-medium text-ink">{githubStats.total.toLocaleString(lang === 'hu' ? 'hu-HU' : 'en-US')} {lang === 'hu' ? 'GitHub-hozzájárulás · 2026-ig' : 'GitHub contributions · through 2026'}</p>
+        <a href={contact.github} target="_blank" rel="noopener noreferrer" class="mt-2 inline-flex min-h-11 items-center text-sm text-forest underline underline-offset-4">{lang === 'hu' ? 'GitHub-profil' : 'GitHub profile'} ↗</a>
       </li>
     </ul>
   </div>

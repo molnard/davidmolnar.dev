@@ -5,6 +5,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://davidmolnar.dev',
   integrations: [tailwind()],
+  devToolbar: { enabled: false },
   vite: {
     cacheDir: '.cache/vite',
   },

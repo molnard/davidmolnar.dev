@@ -1,19 +1,22 @@
 ---
 import CompetencyPage from '../../components/CompetencyPage.astro';
+import SmartHomeStack from '../../components/SmartHomeStack.astro';
 import { useTranslations } from '../../i18n/utils';
 const t = useTranslations('hu');
 ---
 <CompetencyPage
   lang="hu"
   competency="smarthome"
-  title={`${t('comp.smarthome.title')} — David Molnar`}
-  description="Home Assistant, Homey, Zigbee. Otthonok és épületautomatizálás, távoli elérés, monitorozás, AI integráció."
+  title={`${t('comp.smarthome.title')} — Molnár Dávid`}
+  description={t('comp.smarthome.short')}
   detail={t('comp.smarthome.detail')}
   tag={t('comp.smarthome.tag')}
   image="/images/competencies/smarthome.webp"
   fallbackClass="bg-c-sh"
   altHref="/smarthome/"
-/>
+>
+  <SmartHomeStack slot="extra" lang="hu" />
+</CompetencyPage>
 
 <style>
   .bg-c-sh {

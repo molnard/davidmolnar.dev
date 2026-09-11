@@ -1,13 +1,13 @@
 ---
 import { useTranslations, type Lang } from '../i18n/utils';
+import { contact } from '../config/contact';
 
 interface Props {
   lang: Lang;
-  altLang: Lang;
   altHref: string;
 }
 
-const { lang, altLang, altHref } = Astro.props;
+const { lang, altHref } = Astro.props;
 const t = useTranslations(lang);
 const prefix = lang === 'en' ? '' : '/hu';
 const home = lang === 'en' ? '/' : '/hu/';
@@ -19,22 +19,22 @@ const home = lang === 'en' ? '/' : '/hu/';
       href={home}
       class="font-display font-semibold text-lg tracking-tight text-ink hover:text-forest transition-colors"
     >
-      <span>David Molnar</span>
+      <span>{contact.name[lang]}</span>
     </a>
     <div class="flex items-center gap-5 md:gap-7 text-sm">
-      <a href={`${prefix}/projects/`} class="hidden sm:inline text-ink/80 hover:text-forest transition-colors">{t('nav.projects')}</a>
-      <a href={`${prefix}/#contact`} class="hidden sm:inline text-ink/80 hover:text-forest transition-colors">{t('nav.contact')}</a>
+      <a href={`${prefix}/#competencies`} class="hidden sm:inline text-ink/80 hover:text-forest transition-colors">{t('comp.title')}</a>
+      <a href={`${prefix}/#contact`} class="inline-flex min-h-11 items-center text-ink/80 hover:text-forest transition-colors">{t('nav.contact')}</a>
       <div class="font-mono text-[11px] uppercase tracking-widest flex items-center gap-1.5 ml-2">
         {lang === 'en' ? (
-          <span class="text-forest font-semibold">EN</span>
+          <span class="text-forest font-semibold" aria-current="true" lang="en">EN</span>
         ) : (
-          <a href={altHref} data-lang-switch="en" class="text-ink/40 hover:text-forest transition-colors">EN</a>
+          <a href={altHref} data-lang-switch="en" aria-label="English" lang="en" hreflang="en" class="inline-flex min-h-11 items-center text-muted hover:text-forest transition-colors">EN</a>
         )}
         <span class="text-ink/20">/</span>
         {lang === 'hu' ? (
-          <span class="text-forest font-semibold">HU</span>
+          <span class="text-forest font-semibold" aria-current="true" lang="hu">HU</span>
         ) : (
-          <a href={altHref} data-lang-switch="hu" class="text-ink/40 hover:text-forest transition-colors">HU</a>
+          <a href={altHref} data-lang-switch="hu" aria-label="Magyar" lang="hu" hreflang="hu" class="inline-flex min-h-11 items-center text-muted hover:text-forest transition-colors">HU</a>
         )}
       </div>
     </div>

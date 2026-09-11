@@ -1,0 +1,16 @@
+---
+// Original Tabler SVGs (MIT), bundled at build time; no icon runtime or CDN.
+import mail from '@tabler/icons/outline/mail.svg?raw';
+import calendar from '@tabler/icons/outline/calendar-event.svg?raw';
+import message from '@tabler/icons/outline/message-circle.svg?raw';
+import telegram from '@tabler/icons/outline/brand-telegram.svg?raw';
+import qr from '@tabler/icons/outline/qrcode.svg?raw';
+import chevron from '@tabler/icons/outline/chevron-down.svg?raw';
+import copy from '@tabler/icons/outline/copy.svg?raw';
+import close from '@tabler/icons/outline/x.svg?raw';
+import arrow from '@tabler/icons/outline/arrow-right.svg?raw';
+const icons = { mail, calendar, message, telegram, qr, chevron, copy, close, arrow };
+interface Props { name: keyof typeof icons; }
+const { name } = Astro.props;
+---
+<span class="ui-icon" aria-hidden="true" set:html={icons[name]} />

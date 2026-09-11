@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { contact } from '../config/contact';
 
 type Lang = 'en' | 'hu';
 
@@ -42,7 +43,7 @@ const t = content[lang];
 const canonicalPath = lang === 'hu' ? '/hu/addcontact' : '/addcontact';
 const canonicalURL = new URL(canonicalPath, Astro.site).toString();
 const huContactPath = '/hu/addcontact';
-const siteURL = new URL('/', Astro.site).toString();
+const siteURL = lang === 'hu' ? '/hu/' : '/';
 ---
 
 <!doctype html>
@@ -79,14 +80,14 @@ const siteURL = new URL('/', Astro.site).toString();
         <div class="mb-5 flex items-center gap-4">
           <img
             src="/images/david-molnar-contact.jpg"
-            alt="Molnár Dávid"
+            alt={contact.name[lang]}
             width="160"
             height="160"
             class="size-20 shrink-0 rounded-full object-cover ring-4 ring-cream"
           />
           <div>
             <p class="font-mono text-xs uppercase tracking-widest text-forest">{t.label}</p>
-            <h1 class="mt-2 font-display text-3xl font-semibold text-ink">Molnár Dávid</h1>
+            <h1 class="mt-2 font-display text-3xl font-semibold text-ink">{contact.name[lang]}</h1>
             <p class="mt-1 text-muted">davidmolnar.dev</p>
           </div>
         </div>
@@ -106,16 +107,16 @@ const siteURL = new URL('/', Astro.site).toString();
           <div class="py-4">
             <dt class="text-xs font-medium uppercase tracking-wide text-muted">Email</dt>
             <dd class="mt-1 text-lg">
-              <a class="text-forest hover:text-forest-dark" href="mailto:hello@davidmolnar.dev">
-                hello@davidmolnar.dev
+              <a class="text-forest hover:text-forest-dark" href={`mailto:${contact.email}`}>
+                {contact.email}
               </a>
             </dd>
           </div>
           <div class="py-4">
             <dt class="text-xs font-medium uppercase tracking-wide text-muted">{t.phone}</dt>
             <dd class="mt-1 text-lg">
-              <a class="text-forest hover:text-forest-dark" href="tel:+36705950579">
-                +36 70 595 0579
+              <a class="text-forest hover:text-forest-dark" href={`tel:${contact.phone}`}>
+                {contact.phoneDisplay}
               </a>
             </dd>
           </div>
@@ -125,13 +126,13 @@ const siteURL = new URL('/', Astro.site).toString();
           <div class="grid grid-cols-3 gap-2">
             <a
               class="inline-flex min-h-11 items-center justify-center rounded-md border border-ink/15 px-3 text-sm font-medium text-ink transition-colors hover:border-forest hover:text-forest"
-              href="tel:+36705950579"
+              href={`tel:${contact.phone}`}
             >
               {t.call}
             </a>
             <a
               class="inline-flex min-h-11 items-center justify-center rounded-md border border-ink/15 px-3 text-sm font-medium text-ink transition-colors hover:border-forest hover:text-forest"
-              href="mailto:hello@davidmolnar.dev"
+              href={`mailto:${contact.email}`}
             >
               Email
             </a>

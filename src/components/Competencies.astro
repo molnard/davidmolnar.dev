@@ -37,7 +37,6 @@ const items: Competency[] = [
   { slug: 'software',  urlSlug: 'software',    tag: t('comp.software.tag'),  title: t('comp.software.title'),  short: t('comp.software.short'),  alt: t('comp.software.alt'),  fallback: 'bg-c-sw',  image: findImage('software'),  num: '2', numColor: '#F7931A' },
   { slug: 'firmware',  urlSlug: 'firmware',    tag: t('comp.firmware.tag'),  title: t('comp.firmware.title'),  short: t('comp.firmware.short'),  alt: t('comp.firmware.alt'),  fallback: 'bg-c-fw',  image: findImage('firmware'),  num: '3', numColor: '#F7931A' },
   { slug: 'smarthome', urlSlug: 'smarthome',   tag: t('comp.smarthome.tag'), title: t('comp.smarthome.title'), short: t('comp.smarthome.short'), alt: t('comp.smarthome.alt'), fallback: 'bg-c-sh',  image: findImage('smarthome'), num: '4', numColor: '#F7931A' },
-  { slug: 'print',     urlSlug: '3d-printing', tag: t('comp.print.tag'),     title: t('comp.print.title'),     short: t('comp.print.short'),     alt: t('comp.print.alt'),     fallback: 'bg-c-3d',  image: findImage('print'),     num: '5', numColor: '#F7931A' },
 ];
 ---
 
@@ -97,7 +96,7 @@ const items: Competency[] = [
   .comp-card {
     display: grid;
     grid-template-columns: 44% 56%;
-    height: 220px;
+    min-height: 220px;
     border-radius: 1.25rem;
     overflow: hidden;
     text-decoration: none;
@@ -109,7 +108,7 @@ const items: Competency[] = [
   }
 
   @media (min-width: 768px) {
-    .comp-card { height: 250px; }
+    .comp-card { min-height: 250px; }
   }
 
   /* mobile: stack vertically */
@@ -185,6 +184,7 @@ const items: Competency[] = [
   }
 
   .comp-title {
+    overflow-wrap: anywhere;
     font-size: 1.375rem;
     font-weight: 700;
     color: rgba(245, 240, 232, 1);
@@ -195,9 +195,16 @@ const items: Competency[] = [
     .comp-title { font-size: 1.625rem; }
   }
 
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .comp-card { grid-template-columns: 50% 50%; }
+    .comp-left { padding: 1.5rem; gap: .75rem; }
+    .comp-num { font-size: 2.5rem; }
+    .comp-title { font-size: 1.375rem; }
+  }
+
   .comp-short {
     font-size: 0.9rem;
-    color: rgba(245, 240, 232, 0.5);
+    color: rgba(245, 240, 232, 0.78);
     line-height: 1.6;
   }
   @media (min-width: 768px) {
@@ -266,5 +273,9 @@ const items: Competency[] = [
   }
   .bg-c-3d {
     background: conic-gradient(from 45deg at 50% 50%, #1F352B 0%, #2F4A3F 25%, #1F352B 50%, #2F4A3F 75%, #1F352B 100%);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .comp-card { animation: none; opacity: 1; translate: none; }
+    .comp-img-el, .comp-arr { transition: none; }
   }
 </style>

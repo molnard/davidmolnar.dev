@@ -1,0 +1,11 @@
+---
+import Icon from './Icon.astro';
+import type { Lang } from '../i18n/utils';
+interface Props { value: string; label: string; lang: Lang; }
+const { value, label, lang } = Astro.props;
+const copied = lang === 'hu' ? 'Kimásolva' : 'Copied';
+const failed = lang === 'hu' ? 'Nem sikerült másolni. Jelöld ki és másold ki a szöveget.' : 'Copy failed. Select and copy the text manually.';
+---
+<button type="button" class="copy-button" data-copy={value} data-copy-success={copied} data-copy-error={failed} aria-label={label}>
+  <Icon name="copy" /><span data-copy-label>{lang === 'hu' ? 'Másolás' : 'Copy'}</span>
+</button>

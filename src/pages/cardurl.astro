@@ -1,7 +1,7 @@
 ---
 import { cardUrlTarget } from '../config/cardurl';
 
-const targetUrl = new URL(cardUrlTarget, Astro.site).toString();
+const targetUrl = cardUrlTarget;
 const entryUrl = new URL('/cardurl', Astro.site).toString();
 ---
 

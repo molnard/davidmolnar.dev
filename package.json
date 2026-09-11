@@ -8,9 +8,11 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "check:site": "node scripts/check-site.mjs",
     "astro": "astro"
   },
   "dependencies": {
+    "@tabler/icons": "3.46.0",
     "astro": "^4.16.7"
   },
   "devDependencies": {

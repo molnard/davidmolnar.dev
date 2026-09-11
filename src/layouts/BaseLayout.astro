@@ -1,19 +1,21 @@
 ---
 import '../styles/global.css';
+import '../styles/contact.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getLangFromUrl, type Lang } from '../i18n/utils';
+import { contact } from '../config/contact';
 
 interface Props {
   title: string;
   description: string;
   altHref?: string;
+  noindex?: boolean;
 }
 
-const { title, description, altHref: altHrefProp } = Astro.props;
+const { title, description, altHref: altHrefProp, noindex = false } = Astro.props;
 const lang: Lang = getLangFromUrl(Astro.url);
 const altLang: Lang = lang === 'en' ? 'hu' : 'en';
-const altHref = altHrefProp ?? (altLang === 'en' ? '/' : '/hu/');
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const currentPath = Astro.url.pathname;
 const enPath = lang === 'hu'
@@ -23,9 +25,10 @@ const huPath = lang === 'hu'
   ? currentPath
   : currentPath === '/' ? '/hu/' : `/hu${currentPath}`;
 const ogImage = new URL('/og.png', Astro.site).toString();
+const altHref = altHrefProp ?? (altLang === 'en' ? enPath : huPath);
 
 const cfAnalyticsToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
-const isProd = import.meta.env.PROD;
+const isProd = import.meta.env.PROD && import.meta.env.PUBLIC_ENABLE_ANALYTICS === 'true';
 ---
 
 <!doctype html>
@@ -35,6 +38,7 @@ const isProd = import.meta.env.PROD;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex" />}
 
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site).toString()} />
@@ -48,6 +52,9 @@ const isProd = import.meta.env.PROD;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1733" />
+    <meta property="og:image:height" content="908" />
+    <meta property="og:image:alt" content={`${contact.name[lang]} — ${contact.role[lang]}`} />
     <meta property="og:locale" content={lang === 'hu' ? 'hu_HU' : 'en_US'} />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -56,66 +63,35 @@ const isProd = import.meta.env.PROD;
     <meta name="twitter:image" content={ogImage} />
 
     <title>{title}</title>
+    {currentPath === '/' && !noindex && <script is:inline>
+      // Explicit language paths win; only the entry page uses the saved preference.
+      try {
+        var preferred = localStorage.getItem('lang');
+        if (!preferred) preferred = (navigator.language || '').startsWith('hu') ? 'hu' : 'en';
+        if (preferred === 'hu') location.replace('/hu/' + location.search + location.hash);
+      } catch (_) {}
+    </script>}
 
-    <!-- Language auto-detect: runs before paint to avoid flash -->
-    <script is:inline define:vars={{ lang, altHref }}>
-      (function () {
-        var stored = localStorage.getItem('lang');
-        var target;
-        if (stored === 'en' || stored === 'hu') {
-          target = stored;
-        } else {
-          var bl = (navigator.language || '').toLowerCase();
-          target = bl.startsWith('hu') ? 'hu' : 'en';
-        }
-        if (target !== lang) {
-          window.location.replace(altHref);
-        }
-      })();
-    </script>
   </head>
   <body class="min-h-screen bg-paper text-ink font-sans antialiased selection:bg-forest selection:text-paper">
-    <Header lang={lang} altLang={altLang} altHref={altHref} />
-    <main>
+    <a class="skip-link" href="#main">{lang === 'hu' ? 'Ugrás a tartalomra' : 'Skip to content'}</a>
+    <Header lang={lang} altHref={altHref} />
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     <Footer lang={lang} />
+    <p id="copy-status" class="copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
 
-    <!-- Save language preference when user manually switches -->
     <script is:inline>
-      document.addEventListener('click', function (e) {
-        var el = e.target.closest('[data-lang-switch]');
-        if (el) localStorage.setItem('lang', el.dataset.langSwitch);
+      document.addEventListener('click', function (event) {
+        var el = event.target instanceof Element && event.target.closest('[data-lang-switch]');
+        if (!el) return;
+        try { localStorage.setItem('lang', el.dataset.langSwitch); } catch (_) {}
+        if (location.hash) el.hash = location.hash;
       });
     </script>
-
-    <!-- YouTube is loaded only after an explicit visitor action. -->
-    <script is:inline>
-      document.addEventListener('click', function (e) {
-        var button = e.target.closest('[data-privacy-video-load]');
-        if (!button) return;
-
-        var container = button.closest('[data-privacy-video]');
-        if (!container) return;
-
-        var videoId = container.dataset.videoId || '';
-        if (!/^[A-Za-z0-9_-]{11}$/.test(videoId)) return;
-
-        var start = Number.parseInt(container.dataset.videoStart || '', 10);
-        var params = new URLSearchParams({ autoplay: '1', rel: '0' });
-        if (Number.isFinite(start) && start > 0) params.set('start', String(start));
-
-        var iframe = document.createElement('iframe');
-        iframe.className = 'privacy-video__iframe';
-        iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?' + params.toString();
-        iframe.title = container.dataset.videoTitle || 'YouTube video';
-        iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
-        iframe.allowFullscreen = true;
-        iframe.loading = 'lazy';
-        iframe.referrerPolicy = 'no-referrer';
-
-        container.replaceChildren(iframe);
-      });
+    <script>
+      import '../scripts/copy';
     </script>
 
     {isProd && cfAnalyticsToken && (
